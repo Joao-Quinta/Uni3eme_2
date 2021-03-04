@@ -11,7 +11,7 @@ def computeSha(t, T):
     y = []
     for i in t:
         yi = 0
-        if (i * T).is_integer():
+        if (i / T).is_integer():
             yi = 1
         y.append(yi)
     return y
@@ -24,8 +24,14 @@ def plotScatter(functions):
 
 
 def even(s):
-    return
+    even = s.copy()
+    for i in range(0, len(s)):
+        even[i] = (s[i] + s[len(s[0:i + 1]) * -1])/2
+    return even
 
 
 def odd(s):
-    return
+    odd = s.copy()
+    for i in range(0, len(s)):
+        odd[i] = (s[i] - s[len(s[0:i + 1]) * -1]) / 2
+    return odd
