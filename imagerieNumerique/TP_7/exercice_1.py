@@ -34,13 +34,13 @@ for i in range(0, len(tb)):
 
 ########################## d ##########################
 
-# t = [0, 1, 2, 3, 4, 5, 6, 7, 8]
-# tb = [-4, -3, -2, -1, 0, 1, 2, 3, 4]
+# t = [-4, -3, -2, -1, 0, 1, 2, 3, 4]
+# tb = [0.4, 0.5, 0.1, -0.4, -0.4, -0.2, 0.3, -0.2, 0.3]
 
 tbEven = lib.even(tb)
 tbOdd = lib.odd(tb)
 
-# lib.plotScatter([[t, tb, '#1f77b4'], [t, tbEven, '#ff7f0e']])
-# lib.plotScatter([[t, tb, '#1f77b4'], [t, tbOdd, '#ff7f0e']])
+lib.plotScatter([[t, tb, '#1f77b4'], [t, tbEven, '#ff7f0e']])
+lib.plotScatter([[t, tb, '#1f77b4'], [t, tbOdd, '#ff7f0e']])
 
 ########################## e ##########################
