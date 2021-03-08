@@ -50,3 +50,11 @@ def z_3_1(z):
 
 def absNp(m):
     return np.abs(m)
+
+
+def logScale(m):
+    return np.log(1 + m)
+
+
+def npPhase(m):
+    return np.angle(m)
