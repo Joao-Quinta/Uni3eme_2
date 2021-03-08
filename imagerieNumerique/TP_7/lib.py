@@ -26,7 +26,7 @@ def plotScatter(functions):
 def even(s):
     even = s.copy()
     for i in range(0, len(s)):
-        even[i] = (s[i] + s[len(s[0:i + 1]) * -1])/2
+        even[i] = (s[i] + s[len(s[0:i + 1]) * -1]) / 2
     return even
 
 
@@ -35,3 +35,11 @@ def odd(s):
     for i in range(0, len(s)):
         odd[i] = (s[i] - s[len(s[0:i + 1]) * -1]) / 2
     return odd
+
+
+def complexMatrix():
+    x = np.linspace(-2, 2, 101)
+    y = np.linspace(2, -2, 101)
+    xx, yy = np.meshgrid(x, y, sparse=True)
+    z = xx + yy * 1j
+    return z

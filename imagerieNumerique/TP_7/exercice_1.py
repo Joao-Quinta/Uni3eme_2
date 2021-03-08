@@ -7,6 +7,7 @@ y05 = lib.computeSha(t, 0.5)
 y1 = lib.computeSha(t, 1)
 y2 = lib.computeSha(t, 2)
 
+
 # lib.plotScatter([[t, y05, '#1f77b4']])
 # lib.plotScatter([[t, y1, '#1f77b4']])
 # lib.plotScatter([[t, y2, '#1f77b4']])
@@ -40,7 +41,7 @@ for i in range(0, len(tb)):
 tbEven = lib.even(tb)
 tbOdd = lib.odd(tb)
 
-lib.plotScatter([[t, tb, '#1f77b4'], [t, tbEven, '#ff7f0e']])
-lib.plotScatter([[t, tb, '#1f77b4'], [t, tbOdd, '#ff7f0e']])
+# lib.plotScatter([[t, tb, '#1f77b4'], [t, tbEven, '#ff7f0e']])
+# lib.plotScatter([[t, tb, '#1f77b4'], [t, tbOdd, '#ff7f0e']])
 
 ########################## e ##########################
