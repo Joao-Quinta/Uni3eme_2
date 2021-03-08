@@ -41,5 +41,12 @@ def complexMatrix():
     x = np.linspace(-2, 2, 101)
     y = np.linspace(2, -2, 101)
     xx, yy = np.meshgrid(x, y, sparse=True)
-    z = xx + yy * 1j
-    return z
+    return xx + yy * 1j
+
+
+def z_3_1(z):
+    return (z**3)-1
+
+
+def absNp(m):
+    return np.abs(m)
