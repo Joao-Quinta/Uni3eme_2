@@ -42,8 +42,8 @@ x = lib.np.linspace(-2, 2, 101)
 
 ########################## h ##########################
 
-w_matrix_abs = lib.npPhase(w_matrix)
+w_matrix_phase = lib.npPhase(w_matrix)
 
-c = lib.plt.imshow(w_matrix_abs, cmap="hsv", extent=[-2, 2, -2, 2])
-lib.plt.colorbar(c)
-lib.plt.show()
+# c = lib.plt.imshow(w_matrix_phase,extent=[-2, 2, -2, 2])
+# lib.plt.colorbar(c)
+# lib.plt.show()
