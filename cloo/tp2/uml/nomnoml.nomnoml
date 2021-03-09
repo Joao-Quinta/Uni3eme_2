@@ -1,0 +1,9 @@
+[Character|
+-name: String <+get>; -gold: int <+get _ +set>; -maxHP: int <+get>; -currentHP: int; -armor: int; -currentQuest: Quest|
++Character(name: String, maxHP: int, armor: int); +wound(damage: int); +heal(hp:int); +startQuest(q: Quest)]
+
+[Quest|
+-description: String <+get>; -reward: int <+get>|
++Quest(description: String, reward: int)]
+
+[Character]o->[Quest]
