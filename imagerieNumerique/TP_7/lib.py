@@ -17,9 +17,17 @@ def computeSha(t, T):
     return y
 
 
-def plotScatter(functions):
+def plotScatter(functions, titre):
     for func in functions:
         plt.scatter(func[0], func[1], c=func[2])
+    plt.title(titre)
+    plt.show()
+
+
+def plotScatter1(plot, scatter, titre):
+    plt.plot(plot[0], plot[1], c=plot[2])
+    plt.scatter(scatter[0], scatter[1], c=scatter[2])
+    plt.title(titre)
     plt.show()
 
 
@@ -45,7 +53,7 @@ def complexMatrix():
 
 
 def z_3_1(z):
-    return (z**3)-1
+    return (z ** 3) - 1
 
 
 def absNp(m):

@@ -2,20 +2,20 @@ import lib
 
 ########################## a ##########################
 
+# in pdf file
+
 t = lib.returnLinspace(-10, 10, 201)
 y05 = lib.computeSha(t, 0.5)
 y1 = lib.computeSha(t, 1)
 y2 = lib.computeSha(t, 2)
 
-
-# lib.plotScatter([[t, y05, '#1f77b4']])
-# lib.plotScatter([[t, y1, '#1f77b4']])
-# lib.plotScatter([[t, y2, '#1f77b4']])
+# lib.plotScatter([[t, y05, '#1f77b4']], "T = 0.5")
+# lib.plotScatter([[t, y1, '#1f77b4']], "T = 1")
+# lib.plotScatter([[t, y2, '#1f77b4']], "T = 2")
 
 ########################## b ##########################
 
-# lets assume T = 1, we want to sample the f(x) = y values such that x is not float
-# since sha(1) is equal to 1 on all the x values we want, and 0 on floats, we simply multiply and get the same result
+# in pdf file
 
 ########################## c ##########################
 
@@ -29,19 +29,23 @@ for i in range(0, len(tb)):
     tb05.append(tb[i] * y05[i])
     tb2.append(tb[i] * y2[i])
 
-# lib.plotScatter([[t, tb, '#1f77b4'], [t, tb05, '#ff7f0e']])
-# lib.plotScatter([[t, tb, '#1f77b4'], [t, tb1, '#ff7f0e']])
-# lib.plotScatter([[t, tb, '#1f77b4'], [t, tb2, '#ff7f0e']])
+# lib.plotScatter1([t, tb, '#1f77b4'], [t, tb05, '#ff7f0e'], "T = 0.5")
+# lib.plotScatter1([t, tb, '#1f77b4'], [t, tb1, '#ff7f0e'], "T = 1")
+# lib.plotScatter1([t, tb, '#1f77b4'], [t, tb2, '#ff7f0e'], "T = 2")
 
 ########################## d ##########################
-
-# t = [-4, -3, -2, -1, 0, 1, 2, 3, 4]
-# tb = [0.4, 0.5, 0.1, -0.4, -0.4, -0.2, 0.3, -0.2, 0.3]
 
 tbEven = lib.even(tb)
 tbOdd = lib.odd(tb)
 
-# lib.plotScatter([[t, tb, '#1f77b4'], [t, tbEven, '#ff7f0e']])
-# lib.plotScatter([[t, tb, '#1f77b4'], [t, tbOdd, '#ff7f0e']])
+tbEven_tbOdd = []
+for i in range(0,len(tbEven)):
+    tbEven_tbOdd.append(tbEven[i]+tbOdd[i])
+
+# lib.plotScatter1([t, tb, '#1f77b4'], [t, tbEven, '#ff7f0e'], "Even signal")
+# lib.plotScatter1([t, tb, '#1f77b4'], [t, tbOdd, '#ff7f0e'], "Odd signal")
+# lib.plotScatter1([t, tb, '#1f77b4'], [t, tbEven_tbOdd, '#ff7f0e'], "Even + Odd signal")
 
 ########################## e ##########################
+
+# in pdf file
