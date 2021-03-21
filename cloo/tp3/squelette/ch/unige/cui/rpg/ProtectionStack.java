@@ -9,6 +9,8 @@ import java.util.Set;
 @SuppressWarnings("unused")
 public class ProtectionStack implements Protection{
 	
+	// ProtectionStack est une entité, car avec le temps elle peut évoluer, on peut équiper des pièces (eventuellement en déséquiper), ces attributs ne sont donc pas définissants
+	
 	private boolean belowLayer;
 	private boolean aboveLayer;
 	private int totalArmorWeight;

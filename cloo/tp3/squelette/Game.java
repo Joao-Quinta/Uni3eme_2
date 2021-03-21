@@ -57,5 +57,15 @@ public class Game{
 		druidEqui.wound(Integer.valueOf(actualDamage.getTypesDmge().get("damage")));
 		System.out.println(druidEqui.toString());
 		
+		// protectionStack -> entité
+		// damage -> value
+		
+		// ProtectionStack est une entité, car avec le temps elle peut évoluer, on peut équiper des pièces (eventuellement en déséquiper), ces attributs ne sont donc pas définissants
+		// damage est un value objetct, car 2 pieces qui ont le meme type de déffence sont égales,et les protections ne peuvent pas évoluer avec le temps
+		
+
+		Damage piece3 = new Damage(armorTypeP2, armorAmountP2);
+		System.out.println(piece2.equals(piece3));
+		System.out.println(piece2.hashCode() == piece3.hashCode());
 	}
 }

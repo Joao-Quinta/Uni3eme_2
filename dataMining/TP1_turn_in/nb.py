@@ -1,7 +1,6 @@
 import numpy as np
 
 
-
 def train_nb(X, y):
     """
     Train the Naive Bayes classifier. For NB this is just
@@ -25,28 +24,16 @@ def train_nb(X, y):
     # use list comprehension
 
     # Separate training points by class
-    unique_y = np.unique (y)
-    points_by_class = [[x for x, t in zip (X, y) if t == c] for c in unique_y]
-    print(points_by_class)
+    unique_y = np.unique(y)  # returns a list of all different values in y -> all possible classes
+    points_by_class = [[x for x, t in zip(X, y) if t == c] for c in unique_y]
 
-    #########################################################################
-    # TODO:                                                                 #
-    # compute class prior                                                   #
-    #########################################################################
+    total = X.shape[0]  # total number of data points
+    prior = [len(x) / total for x in points_by_class]
 
-    # prior =
+    mean = [X[y == c].mean(axis=0) for c in unique_y]
+    std = [X[y == c].var(axis=0) for c in unique_y]
 
-
-
-    #########################################################################
-    # TODO:                                                                 #
-    # Estimate mean and std for each class / feature                        #
-    #########################################################################
-
-    # mean =
-    # std =
-
-    return prior, mean, std
+    return prior, np.array(mean), np.array(std)
 
 def normal_distribution(x, mean, std):
     """
@@ -100,15 +87,20 @@ def predict(X, prior, mean, std):
     #                                                                               #
     #################################################################################
 
-
     #########################################################################
     #                           TODO
     #             compute the posterior and predict                         #
     # - hint for prediction: class having the biggest probability[argmax()] #
     #########################################################################
+    y_pred = []
+    # pre = la proba prior pour chaque classe
+    for x in X:
+        eachClass = []
+        for c in range(0, len(prior)):
+            eachClass.append(prior[c] * np.prod(
+                [np.exp(-1 * np.square((x[attrN] - mean[c][attrN]) / (2 * std[c][attrN]))) for attrN in
+                 range(0, len(x))]))
+        y_pred.append(np.argmax(eachClass))
 
-    # posterior =
-
-    # y_pred =
     return y_pred
 
