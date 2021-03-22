@@ -1,0 +1,1 @@
+package main.java.ch.unige.cui.rpg;
