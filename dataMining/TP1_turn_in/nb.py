@@ -102,5 +102,5 @@ def predict(X, prior, mean, std):
                  range(0, len(x))]))
         y_pred.append(np.argmax(eachClass))
 
-    return y_pred
+    return np.array(y_pred)
 
