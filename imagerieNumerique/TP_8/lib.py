@@ -1,0 +1,48 @@
+import numpy as np
+import matplotlib.pyplot as plt
+import math
+
+
+def fTildaExo1(t):
+    t = abs(t) % 4
+    r = -1
+    if t <= 1 or t > 3:
+        r = 1
+    return r
+
+
+def fNemeApprox(N, t, ak, bk, w0):
+    rep = 0.5 * ak[0]
+    for i in range(1, N + 1):
+        x = i * w0 * t
+        rep += (ak[i] * np.cos(x) + bk[i] * np.sin(x))
+    return rep
+
+
+def hExo2(t):
+    y = np.zeros(t.shape)
+    for i in range(0, len(t)):
+        if abs(t[i]) <= 1:
+            r = 1 - abs(t[i])
+            y[i] = r
+    return y
+
+
+def periodicExtention(x, y, T):
+    arr = []
+    for val in T:
+        arrVal = np.zeros(x.shape)
+        mid = np.where(x == 0)[0][0]
+        left = y[mid:np.where(x == val / 2)[0][0] + 1]
+        right = y[np.where(x == -val / 2)[0][0]:mid]
+        periodicExt = np.concatenate((left, right))
+        arrVal[mid] = periodicExt[0]
+        j = 1
+        for i in range(1, len(x) - mid):
+            arrVal[mid + i] = periodicExt[j % len(periodicExt)]
+            arrVal[mid - i] = periodicExt[j % len(periodicExt)]
+            j = j + 1
+        arr.append(arrVal)
+    return arr
+
+
