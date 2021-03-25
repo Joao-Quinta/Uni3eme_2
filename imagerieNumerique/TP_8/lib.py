@@ -57,7 +57,11 @@ def periodicExtention(x, y, T):
 
 
 def hChapeauExo2(w):
-    return 2 * ((1 - np.cos(2))/(w**2))
+    return 2 * ((1 - np.cos(2)) / (w ** 2))
+
+
+def computeFk(k, T):
+    return (2 * 1 / T) * (np.sin(k * (2 * np.pi / T) * 1) / (k * (2 * np.pi / T) * 1))
 
 
 def exo3G(t, a):
@@ -69,7 +73,7 @@ def exo3GChapeau(w, a):
 
 
 def exo3HChapeau(w):
-    return exo3GChapeau(w, 1) * np.exp(1*w*1j)
+    return exo3GChapeau(w, 1) * np.exp(1 * w * 1j)
 
 
 def exo3IChapeau(w):

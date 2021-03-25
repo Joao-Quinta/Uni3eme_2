@@ -33,4 +33,7 @@ for i in range(0, len(yA)):
 T = [2, 4, 8, 50, 100]
 w = lib.np.linspace(-20 / 2, 20 / 2, 201)
 
-
+T = 2
+Fk = [lib.computeFk(k, 4) for k in w]
+lib.plt.plot(w, Fk)
+lib.plt.show()
