@@ -54,3 +54,25 @@ def periodicExtention(x, y, T):
             j = j + 1
         arr.append(arrVal)
     return arr
+
+
+def exo3G(t, a):
+    return np.exp(-1 * a * (t ** 2))
+
+
+def exo3GChapeau(w, a):
+    return np.sqrt(np.pi / a) * np.exp((-1) * ((w ** 2) / 4 * a))
+
+
+def exo3HChapeau(w):
+    return exo3GChapeau(w, 1) * np.exp(1*w*1j)
+
+
+# pour G alpha = 1: real = abs, imag = angle
+def represent_complex_signal(x, y):
+    plt.plot(x, np.real(y), label='real')
+    plt.plot(x, np.imag(y), label='imag')
+    plt.plot(x, np.abs(y), label='abs')
+    plt.plot(x, np.angle(y), label='angle')
+    plt.legend()
+    plt.show()
