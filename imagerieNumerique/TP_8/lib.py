@@ -56,6 +56,10 @@ def periodicExtention(x, y, T):
     return arr
 
 
+def hChapeauExo2(w):
+    return 2 * ((1 - np.cos(2))/(w**2))
+
+
 def exo3G(t, a):
     return np.exp(-1 * a * (t ** 2))
 

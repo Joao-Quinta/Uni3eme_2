@@ -24,3 +24,13 @@ for i in range(0, len(yA)):
     lib.plt.plot(x, yA[i])
     lib.plt.title(Tl[i])
     lib.plt.show()
+
+##### c #####
+
+##### d #####
+# function : lib.hChapeauExo2(w)
+
+T = [2, 4, 8, 50, 100]
+w = lib.np.linspace(-20 / 2, 20 / 2, 201)
+
+
