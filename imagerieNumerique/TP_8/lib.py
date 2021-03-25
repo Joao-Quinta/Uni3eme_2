@@ -69,10 +69,11 @@ def exo3HChapeau(w):
 
 
 # pour G alpha = 1: real = abs, imag = angle
-def represent_complex_signal(x, y):
+def represent_complex_signal(x, y, title):
     plt.plot(x, np.real(y), label='real')
     plt.plot(x, np.imag(y), label='imag')
     plt.plot(x, np.abs(y), label='abs')
     plt.plot(x, np.angle(y), label='angle')
+    plt.title(title)
     plt.legend()
     plt.show()

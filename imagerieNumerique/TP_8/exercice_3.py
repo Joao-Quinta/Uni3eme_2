@@ -30,7 +30,7 @@ uBound = [6.2, 1.8, 1.4, 1.1]
 ##### b #####
 
 ##### c #####
-# function : lib.represent_complex_signal(x, y)
+# function : lib.represent_complex_signal(x, y, title) # I added the argument title
 
 ##### d #####
 # function : lib.exo3HChapeau(w)
