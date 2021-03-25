@@ -3,19 +3,29 @@ import matplotlib.pyplot as plt
 import math
 
 
-def fTildaExo1(t):
-    t = abs(t) % 4
-    r = -1
-    if t <= 1 or t > 3:
-        r = 1
+def fTildaExo1(T):
+    y = np.zeros(T.shape)
+    for i in range(0, len(T)):
+        t = abs(T[i]) % 4
+        r = -1
+        if t <= 1 or t > 3:
+            r = 1
+        y[i] = r
+    return y
+
+
+def computeAk(k):
+    r = 0
+    if k % 2 != 0:
+        r = ((-1) ** ((k - 1) / 2)) * (4 / (k * np.pi))
     return r
 
 
-def fNemeApprox(N, t, ak, bk, w0):
-    rep = 0.5 * ak[0]
+def fNemeApprox(N, t, w0):
+    rep = 0.5 * computeAk(0)
     for i in range(1, N + 1):
         x = i * w0 * t
-        rep += (ak[i] * np.cos(x) + bk[i] * np.sin(x))
+        rep = rep + (computeAk(i) * np.cos(x))
     return rep
 
 
@@ -44,5 +54,3 @@ def periodicExtention(x, y, T):
             j = j + 1
         arr.append(arrVal)
     return arr
-
-
