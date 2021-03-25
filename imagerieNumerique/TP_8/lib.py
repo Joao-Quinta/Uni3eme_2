@@ -68,6 +68,10 @@ def exo3HChapeau(w):
     return exo3GChapeau(w, 1) * np.exp(1*w*1j)
 
 
+def exo3IChapeau(w):
+    return np.conj(exo3HChapeau(w))
+
+
 # pour G alpha = 1: real = abs, imag = angle
 def represent_complex_signal(x, y, title):
     plt.plot(x, np.real(y), label='real')

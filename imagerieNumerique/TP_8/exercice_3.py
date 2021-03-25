@@ -41,3 +41,7 @@ lib.represent_complex_signal(x, yGChapeau, "G^(w)")
 lib.represent_complex_signal(x, yHChapeau, "H^(w)")
 
 ##### e #####
+# function : lib.exo3HChapeau(w)
+yIChapeau = np.array([lib.exo3IChapeau(t) for t in x])
+
+lib.represent_complex_signal(x, yIChapeau, "I^(w)")
