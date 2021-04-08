@@ -1,27 +1,31 @@
 <!DOCTYPE html>
 <html>
-<body>
-
-<h2>Create Object from JSON String</h2>
-
-<p id="test"></p>
-<script src="lib/fs.js"></script>
-<script>
-//let rawdata = readFileSync('C:\\Users\\qjoao\\Documents\\GitHub\\Uni3eme_2\\projetInformatique\\test1\\test.json', {encoding:'utf8', flag:'r'});
-const data = readFileSync('./input.txt',{encoding:'utf8', flag:'r'});
   
-// Display the file data
-console.log(data);
-//let data = JSON.parse(rawdata);
-//console.log(data);
+<head>
+    <title>Read Text File</title>
+</head>
+  
+<body>
+    <input type="file" id="file-input" />
+<button id="read-button">Read File</button>
+<pre id="file-contents"></pre>
 
-/*
-obj = JSON.parse(text);
-document.getElementById("test").innerHTML =
-obj.employees[1].firstName + " " + obj.employees[1].lastName;
-*/
+<script>
+	document.querySelector("#read-button").addEventListener('click', function() {
+		let file = document.querySelector("#file-input").files[0];
+		let reader = new FileReader();
+		reader.addEventListener('load', function(e) {
+	    		let text = e.target.result;
+	    		document.querySelector("#file-contents").textContent = text;
+		});
+		reader.readAsText(file);
+	});
+
+    let reader = new FileReader();
+    reader.readAsText(file);
+
 
 </script>
-
 </body>
+  
 </html>
