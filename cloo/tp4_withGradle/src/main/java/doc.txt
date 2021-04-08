@@ -1,0 +1,6 @@
+character:Lancelot,100,10
+knightProtectionSt:layerAbove,layerBelow
+layerAboveT:ChainMail
+layerBelowT:FireProofLeatherVest
+layerAbove:55,27
+layerBelow:100,15,6
