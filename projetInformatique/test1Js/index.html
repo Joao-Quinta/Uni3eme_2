@@ -5,16 +5,22 @@
 <h2>Create Object from JSON String</h2>
 
 <p id="test"></p>
-
+<script src="lib/fs.js"></script>
 <script>
-var text = '{"employees":[' +
-'{"firstName":"John","lastName":"Doe" },' +
-'{"firstName":"Anna","lastName":"Smith" },' +
-'{"firstName":"Peter","lastName":"Jones" }]}';
+//let rawdata = readFileSync('C:\\Users\\qjoao\\Documents\\GitHub\\Uni3eme_2\\projetInformatique\\test1\\test.json', {encoding:'utf8', flag:'r'});
+const data = readFileSync('./input.txt',{encoding:'utf8', flag:'r'});
+  
+// Display the file data
+console.log(data);
+//let data = JSON.parse(rawdata);
+//console.log(data);
 
+/*
 obj = JSON.parse(text);
 document.getElementById("test").innerHTML =
 obj.employees[1].firstName + " " + obj.employees[1].lastName;
+*/
+
 </script>
 
 </body>
