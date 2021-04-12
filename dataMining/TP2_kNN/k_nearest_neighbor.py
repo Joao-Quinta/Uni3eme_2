@@ -1,6 +1,7 @@
-
 import numpy as np
 from distances import *
+from statistics import mode
+
 
 class KNearestNeighbor(object):
     """ a kNN classifier with L2 distance """
@@ -21,8 +22,8 @@ class KNearestNeighbor(object):
         """
         self.X_train = X
         self.y_train = y
-        
-    def predict(self, X, k=1, distance='euclidean', num_loops=0, sigma= None):
+
+    def predict(self, X, k=1, distance='euclidean', num_loops=0, sigma=None):
         """
         Predict labels for test data using this classifier.
 
@@ -49,11 +50,11 @@ class KNearestNeighbor(object):
             else:
                 raise ValueError('Invalid value %d for num_loops' % num_loops)
         elif distance == 'mahalanobis':
-            dists = compute_mahalanobis_dist(self.X_train, X, sigma )
+            dists = compute_mahalanobis_dist(self.X_train, X, sigma)
         elif distance == 'manhattan':
-            dists = compute_manhattan_dist(self.X_train, X )
+            dists = compute_manhattan_dist(self.X_train, X)
         elif distance == 'chebyshev':
-            dists = compute_chebyshev_dist(self.X_train, X )
+            dists = compute_chebyshev_dist(self.X_train, X)
         else:
             raise ValueError('Invalid distance')
 
@@ -76,10 +77,19 @@ class KNearestNeighbor(object):
         num_test = dists.shape[0]
         y_pred = np.zeros(num_test)
         for i in range(num_test):
-        # A list of length k storing the labels of the k nearest neighbors to
-        # the ith test point.
+            # A list of length k storing the labels of the k nearest neighbors to
+            # the ith test point.
 
-            closest_y = []
+            # return np.array(closest_y)
+            # closest_y = [np.take_along_axis(self.y_train, sort, axis=0)]
+
+            """
+            closest_y_index = [np.where(j == sort)[0][0] for j in range(k)]
+            #return closest_y_index, sort[closest_y_index],self.y_train[closest_y_index]
+            closest_y = [self.y_train[closest_y_index[j]] for j in range(len(closest_y_index))]
+            #return closest_y_index,closest_y, sort[closest_y_index], self.y_train[closest_y_index[0]]
+            #closest_y = [np.take_along_axis(self.y_train, sort, axis=0)]
+            """
 
             #########################################################################
             # TODO:                                                                 #
@@ -88,9 +98,16 @@ class KNearestNeighbor(object):
             # neighbors. Store these labels in closest_y.                           #
             # Hint: Look up the function numpy.argsort.                             #
             #########################################################################
-            #Your code
+            # Your code
 
-
+            teste = [1, 1, 1, 2, 6]
+            sort = np.argsort(teste, axis=0)
+            return sort
+            sort = np.argsort(dists[i], axis=0)
+            # sort = np.array([1, 2, 3, 0])
+            # return np.where(0 == sort)[0][0]
+            closest_y = [self.y_train[np.where(j == sort)[0][0]] for j in range(k)]  # label des kieme plus proches
+            # closest_y = [self.y_train[np.where(0 == sort)[0][0]]]
             #########################################################################
             # TODO:                                                                 #
             # Now that you have found the labels of the k nearest neighbors, you    #
@@ -98,9 +115,9 @@ class KNearestNeighbor(object):
             # Store this label in y_pred[i]. Break ties by choosing the smaller     #
             # label.                                                                #
             #########################################################################
-            #Your code
+            # Your code
 
-
+            y_pred[i] = mode(closest_y)
 
             #########################################################################
             #                           END OF YOUR CODE                            #

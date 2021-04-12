@@ -1,4 +1,5 @@
 import numpy as np
+from scipy.spatial import distance
 
 
 def compute_euclidean_dist_two_loops(x_train, x_test):
@@ -21,22 +22,27 @@ def compute_euclidean_dist_two_loops(x_train, x_test):
     dists = np.zeros((num_test, num_train))
     for i in range(num_test):
         for j in range(num_train):
-        #####################################################################
-        # TODO:                                                             #
-        # Compute the l2 distance between the ith test point and the jth    #
-        # training point, and store the result in dists[i, j]. You should   #
-        # not use a loop over dimension.                                    #
-        #####################################################################
-        # Your code
-             pass
+            #####################################################################
+            # TODO:                                                             #
+            # Compute the l2 distance between the ith test point and the jth    #
+            # training point, and store the result in dists[i, j]. You should   #
+            # not use a loop over dimension.                                    #
+            #####################################################################
+            # Your code
 
+            '''
+            sub = np.subtract(x_test[i], x_train[j])
+            dotMul = np.dot(np.transpose(sub), sub)
+            root = np.sqrt(dotMul)
+            '''
 
-
+            dists[i][j] = distance.euclidean(x_test[i], x_train[j])
 
         #####################################################################
         #                       END OF YOUR CODE                            #
         #####################################################################
     return dists
+
 
 def compute_euclidean_dist_one_loop(x_train, x_test):
     """
@@ -49,21 +55,19 @@ def compute_euclidean_dist_one_loop(x_train, x_test):
     num_train = x_train.shape[0]
     dists = np.zeros((num_test, num_train))
     for i in range(num_test):
-      #######################################################################
-      # TODO:                                                               #
-      # Compute the l2 distance between the ith test point and all training #
-      # points, and store the result in dists[i, :].                        #
-      #######################################################################
-      # Your code
+        #######################################################################
+        # TODO:                                                               #
+        # Compute the l2 distance between the ith test point and all training #
+        # points, and store the result in dists[i, :].                        #
+        #######################################################################
+        # Your code
         pass
 
-
-
-
-      #######################################################################
-      #                         END OF YOUR CODE                            #
-      #######################################################################
+    #######################################################################
+    #                         END OF YOUR CODE                            #
+    #######################################################################
     return dists
+
 
 def compute_euclidean_dist_no_loops(x_train, x_test):
     """
@@ -74,7 +78,7 @@ def compute_euclidean_dist_no_loops(x_train, x_test):
     """
     num_test = x_test.shape[0]
     num_train = x_train.shape[0]
-    dists = np.zeros((num_test, num_train)) 
+    dists = np.zeros((num_test, num_train))
     #########################################################################
     # TODO:                                                                 #
     # Compute the l2 distance between all test points and all training      #
@@ -89,14 +93,11 @@ def compute_euclidean_dist_no_loops(x_train, x_test):
     #########################################################################
     # Your code
 
-
-
-
-
     #########################################################################
     #                         END OF YOUR CODE                              #
     #########################################################################
     return dists
+
 
 def compute_mahalanobis_dist(x_train, x_test, sigma):
     """
@@ -115,7 +116,7 @@ def compute_mahalanobis_dist(x_train, x_test, sigma):
     """
     num_test = x_test.shape[0]
     num_train = x_train.shape[0]
-    dists = np.zeros((num_test, num_train)) 
+    dists = np.zeros((num_test, num_train))
     #########################################################################
     # TODO:                                                                 #
     # Compute the Mahalanobis distance between all test points and all      #
@@ -125,9 +126,6 @@ def compute_mahalanobis_dist(x_train, x_test, sigma):
     #########################################################################
     # Your code
 
-
-  
-    
     #########################################################################
     #                         END OF YOUR CODE                              #
     #########################################################################
@@ -150,7 +148,7 @@ def compute_manhattan_dist(x_train, x_test):
     """
     num_test = x_test.shape[0]
     num_train = x_train.shape[0]
-    dists = np.zeros((num_test, num_train)) 
+    dists = np.zeros((num_test, num_train))
     #########################################################################
     # TODO:                                                                #
     # Compute the Manhattan distance between all test points and all      #
@@ -159,7 +157,7 @@ def compute_manhattan_dist(x_train, x_test):
     #                                                                       #
     #########################################################################
     # Your code                    
-            
+
     #########################################################################
     #                         END OF YOUR CODE                              #
     #########################################################################
@@ -181,14 +179,13 @@ def define_covariance(X_train, method):
     #########################################################################
     # Your code
     if method == 'diag_average_cov':
-        cov = np.zeros((d, d)) 
+        cov = np.zeros((d, d))
         return cov
-  
-    
+
+
     #########################################################################
     #                         END OF YOUR CODE                              #
     #########################################################################
-
 
     #########################################################################
     # TODO:                                                                 #
@@ -198,15 +195,14 @@ def define_covariance(X_train, method):
     #########################################################################
     # Your code
     elif method == 'diag_cov':
-        cov = np.zeros((d, d)) 
+        cov = np.zeros((d, d))
         return cov
 
 
-    
+
     #########################################################################
     #                         END OF YOUR CODE                              #
     #########################################################################
-
 
     #########################################################################
     # TODO:                                                                 #
@@ -216,20 +212,14 @@ def define_covariance(X_train, method):
 
     # Your code
     elif method == 'full_cov':
-        cov = np.zeros((d, d)) 
+        cov = np.zeros((d, d))
 
         return cov
 
-    
+
     #########################################################################
     #                         END OF YOUR CODE                              #
     #########################################################################
 
     else:
         raise ValueError("Uknown method identifier.")
-
-
-
-
-
-
