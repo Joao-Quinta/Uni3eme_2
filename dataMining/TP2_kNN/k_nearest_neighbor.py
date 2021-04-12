@@ -100,14 +100,9 @@ class KNearestNeighbor(object):
             #########################################################################
             # Your code
 
-            teste = [1, 1, 1, 2, 6]
-            sort = np.argsort(teste, axis=0)
-            return sort
-            sort = np.argsort(dists[i], axis=0)
-            # sort = np.array([1, 2, 3, 0])
-            # return np.where(0 == sort)[0][0]
-            closest_y = [self.y_train[np.where(j == sort)[0][0]] for j in range(k)]  # label des kieme plus proches
-            # closest_y = [self.y_train[np.where(0 == sort)[0][0]]]
+            sort = np.argsort(dists[i, :])
+            closest_y = np.take_along_axis(self.y_train, sort, axis=0)
+
             #########################################################################
             # TODO:                                                                 #
             # Now that you have found the labels of the k nearest neighbors, you    #
@@ -117,7 +112,7 @@ class KNearestNeighbor(object):
             #########################################################################
             # Your code
 
-            y_pred[i] = mode(closest_y)
+            y_pred[i] = mode(closest_y[:k])
 
             #########################################################################
             #                           END OF YOUR CODE                            #

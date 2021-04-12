@@ -61,7 +61,7 @@ def compute_euclidean_dist_one_loop(x_train, x_test):
         # points, and store the result in dists[i, :].                        #
         #######################################################################
         # Your code
-        pass
+        dists[i, :] = np.apply_along_axis(distance.euclidean, 1, x_train, x_test[i])
 
     #######################################################################
     #                         END OF YOUR CODE                            #
@@ -76,6 +76,8 @@ def compute_euclidean_dist_no_loops(x_train, x_test):
 
     Input / Output: Same as compute_euclidean_dist_two_loops
     """
+    b = x_train
+    a = x_test
     num_test = x_test.shape[0]
     num_train = x_train.shape[0]
     dists = np.zeros((num_test, num_train))
@@ -92,7 +94,11 @@ def compute_euclidean_dist_no_loops(x_train, x_test):
     #       and two broadcast sums.                                         #
     #########################################################################
     # Your code
-
+    #dists = np.sum(np.square(x_test)[:,np.newaxis,:], axis=2) - 2 * x_test.dot(x_train.T) + np.sum(np.square(x_train), axis=1)
+    aSumSquare = np.sum(np.square(a), axis=1)
+    bSumSquare = np.sum(np.square(b), axis=1)
+    mul = np.dot(a, b.T)
+    dists = np.sqrt(aSumSquare[:, np.newaxis] + bSumSquare - 2 * mul)
     #########################################################################
     #                         END OF YOUR CODE                              #
     #########################################################################
