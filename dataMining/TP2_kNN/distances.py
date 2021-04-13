@@ -97,7 +97,7 @@ def compute_euclidean_dist_no_loops(x_train, x_test):
     x_trainSumSquare = np.sum(np.square(x_train), axis=1)
     mul = np.dot(x_test, x_train.T)
     dists = np.sqrt(x_testSumSquare[:, np.newaxis] + x_trainSumSquare - 2 * mul)
-    
+
     #########################################################################
     #                         END OF YOUR CODE                              #
     #########################################################################
@@ -130,6 +130,10 @@ def compute_mahalanobis_dist(x_train, x_test, sigma):
     #                                                                       #
     #########################################################################
     # Your code
+    for i in range(num_test):
+        for j in range(num_train):
+            dists[i][j] = distance.mahalanobis(x_test[i], x_train[j], sigma)
+
 
     #########################################################################
     #                         END OF YOUR CODE                              #
@@ -162,7 +166,9 @@ def compute_manhattan_dist(x_train, x_test):
     #                                                                       #
     #########################################################################
     # Your code                    
-
+    for i in range(num_test):
+        for j in range(num_train):
+            dists[i][j] = distance.cityblock(x_test[i], x_train[j])
     #########################################################################
     #                         END OF YOUR CODE                              #
     #########################################################################
@@ -227,4 +233,4 @@ def define_covariance(X_train, method):
     #########################################################################
 
     else:
-        raise ValueError("Uknown method identifier.")
+        raise ValueError("Unknown method identifier.")
