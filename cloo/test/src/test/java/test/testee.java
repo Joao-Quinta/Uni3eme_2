@@ -32,6 +32,8 @@ class Testee {
     @Test
     void getMagicalTest(){
         System.out.println("Test Damage getter method for magical damages.");
+        Called t = new Called(4);
+        assertEquals(4,t.getNumber());
         
         //Damage dmg = new Damage(0,120,0,0);
         

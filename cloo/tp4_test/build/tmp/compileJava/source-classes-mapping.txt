@@ -1,0 +1,20 @@
+ch/unige/cui/rpg/Quest.java
+ ch.unige.cui.rpg.Quest
+ch/unige/cui/rpg/ProtectionStack.java
+ ch.unige.cui.rpg.ProtectionStack
+ch/unige/cui/rpg/ChainMail.java
+ ch.unige.cui.rpg.ChainMail
+Game.java
+ ch.unige.cui.game.Game
+ch/unige/cui/rpg/MagicalShield.java
+ ch.unige.cui.rpg.MagicalShield
+ch/unige/cui/rpg/Damage.java
+ ch.unige.cui.rpg.Damage
+ch/unige/cui/rpg/Equipment.java
+ ch.unige.cui.rpg.Equipment
+ch/unige/cui/rpg/GameCharacter.java
+ ch.unige.cui.rpg.GameCharacter
+ch/unige/cui/rpg/Protection.java
+ ch.unige.cui.rpg.Protection
+ch/unige/cui/rpg/FireProofLeatherVest.java
+ ch.unige.cui.rpg.FireProofLeatherVest
