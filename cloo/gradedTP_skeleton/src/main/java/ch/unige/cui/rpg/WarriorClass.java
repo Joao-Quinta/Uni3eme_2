@@ -3,16 +3,15 @@ package ch.unige.cui.rpg;
 public class WarriorClass extends GameCharacter implements CharClass {
 
     public WarriorClass(String name,
-                int maxHP, 
-                int gold, 
-                ProtectionStack protectionSt,
-                CharProfile pr
-                ){
-                super(name,maxHP,gold,protectionSt,pr);
+            int maxHP,
+            int gold,
+            ProtectionStack protectionSt,
+            CharProfile pr
+            ) {
+    super(name,maxHP,gold,protectionSt,pr);
     }
 
     public CharProfile levelUp(CharProfile pr){
-    	LevelClass levelRules = new LevelClass();
     	int lvl = pr.getLvl();
     	int stamToAdd = 2;
     	int strengthToAdd = 1;

@@ -12,7 +12,6 @@ public class MageClass extends GameCharacter implements CharClass{
     }
     
     public CharProfile levelUp(CharProfile pr){
-    	LevelClass levelRules = new LevelClass();
     	int lvl = pr.getLvl();
     	int stamToAdd = 0;
     	int intelToAdd = 3;
