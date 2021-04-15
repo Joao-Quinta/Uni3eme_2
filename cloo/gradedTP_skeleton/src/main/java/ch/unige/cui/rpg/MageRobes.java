@@ -1,23 +1,30 @@
 package ch.unige.cui.rpg;
 
 public class MageRobes implements Protection {
+	private final Damage protectionValues;
+	private final int weight;
 
-    //cette classe est a completer pour Ex1 ... 
 
     public int getWeight() {
-        return 0;
+        return weight;
     }
 
-    public MageRobes(int unknownArg1, int unknownArg2){
-        //A completer ...
+    public MageRobes(int magicalProt, int weight){
+    	protectionValues = new Damage(0,magicalProt,0,0);
+    	this.weight = weight;
+    	
     }
 
     public Damage absorb(Damage dmg) {
-        return new Damage();
+        //chain mail only absorbs magical damage
+        return new Damage(dmg.getPhysical(), 
+                    dmg.getMagical()-protectionValues.getMagical(), 
+                    dmg.getElectrical(),
+                    dmg.getFire());
     }
 
     public Damage getMageRobesProt() {
-        return new Damage();
+        return protectionValues;
     }
 
 }
