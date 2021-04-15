@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="JUnit Jupiter" tests="8" skipped="0" failures="0" errors="0" time="0.034" hostname="joao-quinta-Lenovo" timestamp="2021-04-15T11:16:37">
+<testsuite name="JUnit Jupiter" tests="8" skipped="0" failures="0" errors="0" time="0.035" hostname="joao-quinta-Lenovo" timestamp="2021-04-15T11:25:19">
 <properties>
 <property name="awt.toolkit" value="sun.awt.X11.XToolkit"/>
 <property name="file.encoding" value="UTF-8"/>
@@ -55,7 +55,7 @@
 <property name="user.timezone" value="Europe/Zurich"/>
 <property name="user.variant" value=""/>
 </properties>
-<testcase name="warPassLvlTest()" classname="RPGTest" time="0.006">
+<testcase name="warPassLvlTest()" classname="RPGTest" time="0.007">
 <system-out><![CDATA[
 unique-id: [engine:junit-jupiter]/[class:RPGTest]/[method:warPassLvlTest()]
 display-name: (unit test) warPassLvlTest:
@@ -97,7 +97,7 @@ unique-id: [engine:junit-jupiter]/[class:RPGTest]/[method:lvlUpStatTestMageOnly(
 display-name: (scenario) lvlUpStatTestMageOnly:
 ]]></system-out>
 </testcase>
-<testcase name="lvlUpXPTest()" classname="RPGTest" time="0.001">
+<testcase name="lvlUpXPTest()" classname="RPGTest" time="0">
 <system-out><![CDATA[
 unique-id: [engine:junit-jupiter]/[class:RPGTest]/[method:lvlUpXPTest()]
 display-name: (scenario) lvlUp xp test:

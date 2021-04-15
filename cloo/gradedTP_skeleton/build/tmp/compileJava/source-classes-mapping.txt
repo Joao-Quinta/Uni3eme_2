@@ -24,9 +24,9 @@ ch/unige/cui/rpg/ChainMail.java
  ch.unige.cui.rpg.ChainMail
 ch/unige/cui/rpg/MageRobes.java
  ch.unige.cui.rpg.MageRobes
+ch/unige/cui/rpg/Game.java
+ ch.unige.cui.rpg.Game
 ch/unige/cui/rpg/MageClass.java
  ch.unige.cui.rpg.MageClass
 ch/unige/cui/rpg/WarriorClass.java
  ch.unige.cui.rpg.WarriorClass
-ch/unige/cui/rpg/Game.java
- ch.unige.cui.rpg.Game
