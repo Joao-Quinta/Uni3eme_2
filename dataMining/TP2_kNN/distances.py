@@ -134,7 +134,6 @@ def compute_mahalanobis_dist(x_train, x_test, sigma):
         for j in range(num_train):
             dists[i][j] = distance.mahalanobis(x_test[i], x_train[j], sigma)
 
-
     #########################################################################
     #                         END OF YOUR CODE                              #
     #########################################################################
@@ -190,9 +189,7 @@ def define_covariance(X_train, method):
     #########################################################################
     # Your code
     if method == 'diag_average_cov':
-        cov = np.zeros((d, d))
-        return cov
-
+        return np.diag(np.array([np.var(X_train) for i in range(d)]))
 
     #########################################################################
     #                         END OF YOUR CODE                              #
@@ -206,10 +203,7 @@ def define_covariance(X_train, method):
     #########################################################################
     # Your code
     elif method == 'diag_cov':
-        cov = np.zeros((d, d))
-        return cov
-
-
+        return np.diag(np.array([np.var(X_train[i]) for i in range(d)]))
 
     #########################################################################
     #                         END OF YOUR CODE                              #
@@ -223,9 +217,7 @@ def define_covariance(X_train, method):
 
     # Your code
     elif method == 'full_cov':
-        cov = np.zeros((d, d))
-
-        return cov
+        return np.cov(X_train)
 
 
     #########################################################################
