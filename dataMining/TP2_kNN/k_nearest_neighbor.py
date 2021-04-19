@@ -61,60 +61,16 @@ class KNearestNeighbor(object):
         return self.predict_labels(dists, k=k)
 
     def predict_labels(self, dists, k=1):
-        """
-        Given a matrix of distances between test points and training points,
-        predict a label for each test point.
-
-        Inputs:
-        - dists: A numpy array of shape (num_test, num_train) where dists[i, j]
-        gives the distance betwen the ith test point and the jth training point.
-        - k: The number of nearest neighbors that vote for the predicted labels.
-
-        Returns:
-        - y: A numpy array of shape (num_test,) containing predicted labels for the
-        test data, where y[i] is the predicted label for the test point X[i].  
-        """
         num_test = dists.shape[0]
         y_pred = np.zeros(num_test)
         for i in range(num_test):
-            # A list of length k storing the labels of the k nearest neighbors to
-            # the ith test point.
-
-            # return np.array(closest_y)
-            # closest_y = [np.take_along_axis(self.y_train, sort, axis=0)]
-
-            """
-            closest_y_index = [np.where(j == sort)[0][0] for j in range(k)]
-            #return closest_y_index, sort[closest_y_index],self.y_train[closest_y_index]
-            closest_y = [self.y_train[closest_y_index[j]] for j in range(len(closest_y_index))]
-            #return closest_y_index,closest_y, sort[closest_y_index], self.y_train[closest_y_index[0]]
-            #closest_y = [np.take_along_axis(self.y_train, sort, axis=0)]
-            """
-
-            #########################################################################
-            # TODO:                                                                 #
-            # Use the distance matrix to find the k nearest neighbors of the ith    #
-            # testing point, and use self.y_train to find the labels of these       #
-            # neighbors. Store these labels in closest_y.                           #
-            # Hint: Look up the function numpy.argsort.                             #
-            #########################################################################
-            # Your code
-
             sort = np.argsort(dists[i, :])
+            # argsort doesnt sort an array, it returns the index where we would put each value were the array to be
+            # sorted if the first value in the input array, is the second smallest, then the first value in the
+            # output array will be 1 the smallest value would be given the index 0
             closest_y = np.take_along_axis(self.y_train, sort, axis=0)
-
-            #########################################################################
-            # TODO:                                                                 #
-            # Now that you have found the labels of the k nearest neighbors, you    #
-            # need to find the most common label in the list closest_y of labels.   #
-            # Store this label in y_pred[i]. Break ties by choosing the smaller     #
-            # label.                                                                #
-            #########################################################################
-            # Your code
-
+            # takes values from first input depending on 2nd input, so it looks for the 0 in sort, and the value in
+            # y_train that mirrors its position, will be the first in the output array
             y_pred[i] = mode(closest_y[:k])
-
-            #########################################################################
-            #                           END OF YOUR CODE                            #
-            #########################################################################
+            # we take the k closest values, and apply mode, that returns the most common label
         return y_pred
