@@ -9,9 +9,9 @@ y05 = lib.computeSha(t, 0.5)
 y1 = lib.computeSha(t, 1)
 y2 = lib.computeSha(t, 2)
 
-# lib.plotScatter([[t, y05, '#1f77b4']], "T = 0.5")
-# lib.plotScatter([[t, y1, '#1f77b4']], "T = 1")
-# lib.plotScatter([[t, y2, '#1f77b4']], "T = 2")
+lib.plotScatter([[t, y05, '#1f77b4']], "T = 0.5")
+lib.plotScatter([[t, y1, '#1f77b4']], "T = 1")
+lib.plotScatter([[t, y2, '#1f77b4']], "T = 2")
 
 ########################## b ##########################
 
