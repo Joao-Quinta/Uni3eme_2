@@ -2,6 +2,7 @@ from __future__ import print_function, division
 import numpy as np
 import math
 
+
 class LinearRegression_RidgeRegression():
     """Linear Regression and Ridge Regression.
     Parameters:
@@ -19,7 +20,8 @@ class LinearRegression_RidgeRegression():
     analytical_sol: boolean
         True or false depending if analytical solution will be used during the training.
     """
-    def __init__(self, X, y, iterations=100, lr=0.001, l2_reg = 0, analytical_sol=True):
+
+    def __init__(self, X, y, iterations=100, lr=0.001, l2_reg=0, analytical_sol=True):
         self.analytical_sol = analytical_sol
         self.iterations = iterations
         self.lr = lr
@@ -29,7 +31,7 @@ class LinearRegression_RidgeRegression():
         self.n_features = self.X.shape[1]
         """ Initialize weights randomly [-1/d, 1/d] """
         limit = 1 / np.sqrt(self.n_features)
-        self.w = np.random.uniform(-limit, limit, (self.n_features, ))
+        self.w = np.random.uniform(-limit, limit, (self.n_features,))
 
     def fit(self):
         """Function that returns the weights of Linear Regression and
@@ -45,7 +47,8 @@ class LinearRegression_RidgeRegression():
             # for both Linear and Ridge Regression (Linear with l2 regularizer)  #
             # Calculate weights by least squares (analytical solution)           #
             ######################################################################
-
+            if self.l2_reg == 0:
+                self.w = np.dot(np.dot(np.linalg.inv(np.dot(self.X.transpose(), self.X)), self.X.transpose()), self.y)
             return self.w
         else:
             ######################################################################
@@ -53,7 +56,9 @@ class LinearRegression_RidgeRegression():
             # for both Linear and Ridge Regression (Linear with l2 regularizer)  #
             # Calculate weights using gradient descent (GD)                      #
             ######################################################################
-
+            if self.l2_reg == 0:
+                for i in range(self.iterations):
+                    self.w = self.w - self.lr * (np.matmul(-2*self.X.transpose(), np.subtract(self.y, np.dot(self.X, self.w))))
             return self.w
 
     def predict(self, X):
@@ -62,7 +67,5 @@ class LinearRegression_RidgeRegression():
         # To do:                                                             #
         # make prediction                                                    #
         ######################################################################
-        y_pred = np.zeros(X.shape[0],)
+        y_pred = np.dot(X, self.w)
         return y_pred
-
-
