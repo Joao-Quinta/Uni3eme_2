@@ -31,5 +31,10 @@ public class ManaPotion implements Item{
 	public int getMana() {
 		return this.mana;
 	}
+	
+	public String toString() {
+		return "Mana potion -> " + getName() + " - it gives : " + getMana() + " mana, its weight is : " + getWeight() + " and you need lvl : " + getMinLvl() +" to use it";
+	}
+
 
 }

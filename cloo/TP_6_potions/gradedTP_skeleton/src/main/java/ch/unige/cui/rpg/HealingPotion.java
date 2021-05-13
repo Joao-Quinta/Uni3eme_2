@@ -31,5 +31,9 @@ public class HealingPotion implements Item{
 	public int getHp() {
 		return this.hp;
 	}
+	
+	public String toString() {
+		return "Healing potion -> " + getName() + " - it gives : " + getHp() + " health, its weight is : " + getWeight() + " and you need lvl : " + getMinLvl() +" to use it";
+	}
 
 }
