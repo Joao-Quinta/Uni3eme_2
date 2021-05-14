@@ -1,0 +1,6 @@
+HealingPotion,Lesser Healing Potion,1,10,1
+HealingPotion,Healing Potion,11,25,5
+HealingPotion,Major Healing Potion,26,50,10
+ManaPotion,Lesser Mana Potion,1,5,1
+ManaPotion,Mana Potion,6,10,5
+ManaPotion,Major Mana Potion,11,20,10
