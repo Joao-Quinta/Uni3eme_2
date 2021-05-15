@@ -43,11 +43,12 @@ public class LootGenerator implements RandomGenerator<Item> {
         
         int propertyVal = rng.nextInt(maxVal - minVal) + minVal;
         int weightVal = (int) Math.ceil((double) propertyVal/5.0);
+        int price = (int) Math.ceil((double) propertyVal/7.0);
         
         try{
             Class cl = Class.forName("ch.unige.cui.rpg."+classVal);
-            Constructor cons = cl.getConstructor(String.class, int.class, int.class, int.class );
-            return  (Item) cons.newInstance(nameVal, propertyVal, weightVal, minLvlVal);
+            Constructor cons = cl.getConstructor(String.class, int.class, int.class, int.class, int.class);
+            return  (Item) cons.newInstance(nameVal, propertyVal, weightVal, minLvlVal, price);
         }
         catch(Exception e){
             System.out.println("Exception occured.");

@@ -6,12 +6,14 @@ public class HealingPotion implements Item {
     private final int HP;
     private final int weight;
     private final int minLvl;
+    private final int price;
 
-    public HealingPotion(String name, int HP, int weight, int minLvl){
+    public HealingPotion(String name, int HP, int weight, int minLvl, int prix){
         this.name=name;
         this.HP=HP;
         this.weight=weight;
         this.minLvl=minLvl;
+        this.price = prix;
     }
 
     public int getWeight(){
@@ -33,7 +35,11 @@ public class HealingPotion implements Item {
     
     @Override
     public String toString() {
-        return "HealingPotion [HP=" + HP + ", minLvl=" + minLvl + ", name=" + name + ", weight=" + weight + "]";
+        return "HealingPotion [HP=" + HP + ", minLvl=" + minLvl + ", name=" + name + ", weight=" + weight + ", price=" + price + "]";
     }
+
+	public int getPrice() {
+		return price;
+	}
     
 }

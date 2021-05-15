@@ -31,7 +31,7 @@ class LinearRegression_RidgeRegression():
         self.n_features = self.X.shape[1]
         """ Initialize weights randomly [-1/d, 1/d] """
         limit = 1 / np.sqrt(self.n_features)
-        self.w = np.random.uniform(-limit, limit, (self.n_features,))
+        self.w = np.random.uniform(-limit, limit, (self.n_features,)).reshape(X.shape[1], 1)
 
     def fit(self):
         """Function that returns the weights of Linear Regression and
@@ -58,7 +58,24 @@ class LinearRegression_RidgeRegression():
             ######################################################################
             if self.l2_reg == 0:
                 for i in range(self.iterations):
-                    self.w = self.w - self.lr * (np.matmul(-2*self.X.transpose(), np.subtract(self.y, np.dot(self.X, self.w))))
+                    """
+                    print("X transpose : ", self.X.transpose().shape)
+                    print("X : ", self.X.shape)
+                    print("w : ", self.w.shape)
+                    print("y : ", self.y.shape)
+                    print(self.w)
+                    print(self.y)
+                    paraR = np.dot(self.X, self.w)
+                    print("Xw : ", paraR.shape)
+                    para = np.subtract(self.y, paraR)
+                    print("y - Xw : ", para.shape)
+                    evid = -2 * self.X.transpose()
+                    print("-2*Xt : ", evid.shape)
+                    erro = np.dot(evid, para)
+                    errLR = self.lr * erro
+                    self.w = self.w - errLR
+                    """
+                    self.w = self.w - (self.lr * (np.dot(-2*self.X.transpose(), np.subtract(self.y, np.dot(self.X, self.w)))))
             return self.w
 
     def predict(self, X):
@@ -67,5 +84,4 @@ class LinearRegression_RidgeRegression():
         # To do:                                                             #
         # make prediction                                                    #
         ######################################################################
-        y_pred = np.dot(X, self.w)
-        return y_pred
+        return np.dot(X, self.w)

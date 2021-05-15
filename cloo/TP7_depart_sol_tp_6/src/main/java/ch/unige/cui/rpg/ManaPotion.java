@@ -7,12 +7,14 @@ public class ManaPotion implements Item {
     private final int mana;
     private final int weight;
     private final int minLvl;
-
-    public ManaPotion(String name, int mana, int weight, int minLvl){
+    private final int price;
+    
+    public ManaPotion(String name, int mana, int weight, int minLvl, int prix){
         this.name=name;
         this.mana=mana;
         this.weight=weight;
         this.minLvl=minLvl;
+        this.price = prix;
     }
 
     public int getWeight(){
@@ -34,7 +36,11 @@ public class ManaPotion implements Item {
     
     @Override
     public String toString() {
-        return "ManaPotion [mana=" + mana + ", minLvl=" + minLvl + ", name=" + name + ", weight=" + weight + "]";
+        return "ManaPotion [mana=" + mana + ", minLvl=" + minLvl + ", name=" + name + ", weight=" + weight + ", price=" + price + "]";
     }
+
+	public int getPrice() {
+		return price;
+	}
     
 }

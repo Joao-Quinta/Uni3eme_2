@@ -1,5 +1,7 @@
 package ch.unige.cui.rpg;
 
+import java.util.Iterator;
+import java.util.List;
 import java.util.Random;
 import java.io.File;
 
@@ -15,7 +17,18 @@ public class Game {
         String absolutePath = file.getAbsolutePath();
         
         System.out.println(absolutePath);
-
+        
+        Trader npc = new Trader(10, absolutePath);
+        
+        List<Item> tradeGoodsNpc = npc.getTradeGoods();
+        
+        Iterator<Item> it = tradeGoodsNpc.iterator();
+        
+        while(it.hasNext()) {
+        	System.out.println(it.next().toString());
+        }
+        
+        /*
         LootGenerator lg = new LootGenerator(absolutePath);
 
         var x = lg.single(rng);
@@ -23,5 +36,6 @@ public class Game {
 
         System.out.println(x.toString());
         System.out.println(y.toString());
+        */
     }
 }
