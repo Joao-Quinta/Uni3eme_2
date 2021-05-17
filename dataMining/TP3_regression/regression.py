@@ -47,8 +47,7 @@ class LinearRegression_RidgeRegression():
             # for both Linear and Ridge Regression (Linear with l2 regularizer)  #
             # Calculate weights by least squares (analytical solution)           #
             ######################################################################
-            if self.l2_reg == 0:
-                self.w = np.dot(np.dot(np.linalg.inv(np.dot(self.X.transpose(), self.X)), self.X.transpose()), self.y)
+            self.w = np.dot(np.dot(np.linalg.inv(np.add(np.dot(self.X.transpose(), self.X), np.identity(self.X.shape[1]) * self.l2_reg)), self.X.transpose()), self.y)
             return self.w
         else:
             ######################################################################
@@ -58,24 +57,10 @@ class LinearRegression_RidgeRegression():
             ######################################################################
             if self.l2_reg == 0:
                 for i in range(self.iterations):
-                    """
-                    print("X transpose : ", self.X.transpose().shape)
-                    print("X : ", self.X.shape)
-                    print("w : ", self.w.shape)
-                    print("y : ", self.y.shape)
-                    print(self.w)
-                    print(self.y)
-                    paraR = np.dot(self.X, self.w)
-                    print("Xw : ", paraR.shape)
-                    para = np.subtract(self.y, paraR)
-                    print("y - Xw : ", para.shape)
-                    evid = -2 * self.X.transpose()
-                    print("-2*Xt : ", evid.shape)
-                    erro = np.dot(evid, para)
-                    errLR = self.lr * erro
-                    self.w = self.w - errLR
-                    """
-                    self.w = self.w - (self.lr * (np.dot(-2*self.X.transpose(), np.subtract(self.y, np.dot(self.X, self.w)))))
+                    self.w = np.subtract(self.w, (self.lr * (np.dot(-2*self.X.transpose(), np.subtract(self.y, np.dot(self.X, self.w))))))
+            else:
+                for i in range(self.iterations):
+                    self.w = np.subtract(np.subtract(self.w, (self.lr * (np.dot(-2*self.X.transpose(), np.subtract(self.y, np.dot(self.X, self.w)))))), 2 * self.l2_reg * self.w)
             return self.w
 
     def predict(self, X):
