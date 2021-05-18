@@ -1,5 +1,6 @@
 import matplotlib.pyplot as plt
 import math
+from skimage import io
 
 
 def affichage_rows_cols_images(rows, cols, images, labels):
@@ -64,3 +65,7 @@ def crop_around_center(image, width, height):
     y2 = int(image_center[1] + height * 0.5)
 
     return image[y1:y2, x1:x2]
+
+
+def loadImag(path):
+    return (io.imread(path, as_gray=True) * 255).astype("uint8")
