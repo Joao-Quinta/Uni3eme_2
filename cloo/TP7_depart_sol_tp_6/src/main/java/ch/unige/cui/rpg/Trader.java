@@ -21,5 +21,11 @@ public class Trader {
 	public List<Item> getTradeGoods(){
 		return tradeGoods;
 	}
+	
+	public Item sellPotion(List<? extends Item> stock, int idx, int offeredAmount) {
+		this.gold += offeredAmount;
+		Item obj = tradeGoods.remove(idx);
+		return obj;
+	}
 
 }

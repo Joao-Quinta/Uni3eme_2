@@ -30,7 +30,6 @@ public class GameCharacter {
 	
 	public void addItem(Item obj) {
 		bag.add(obj);
-	}
-	
+	}	
 
 }
