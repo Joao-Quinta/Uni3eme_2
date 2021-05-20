@@ -1,6 +1,7 @@
 import matplotlib.pyplot as plt
 import math
 from skimage import io
+import numpy as np
 
 
 def affichage_rows_cols_images(rows, cols, images, labels):
@@ -69,3 +70,22 @@ def crop_around_center(image, width, height):
 
 def loadImag(path):
     return (io.imread(path, as_gray=True) * 255).astype("uint8")
+
+
+def get_smallest_shape_in_image(images):  # returns smaller size image
+    smallest_shape = np.inf
+    for image in images:
+        if image.shape[0] < smallest_shape or image.shape[1] < smallest_shape:
+            if image.shape[0] < image.shape[1]:
+                smallest_shape = image.shape[0]
+            else:
+                smallest_shape = image.shape[1]
+    return smallest_shape
+
+
+def matrixflip(m, d):  # flips image by axis
+    myl = np.array(m)
+    if d == 'v':
+        return np.flip(myl, axis=0)
+    elif d == 'h':
+        return np.flip(myl, axis=1)
