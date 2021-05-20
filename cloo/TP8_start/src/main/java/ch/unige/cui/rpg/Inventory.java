@@ -5,22 +5,22 @@ import ch.unige.cui.rpg.Item;
 import ch.unige.cui.rpg.ItemInventory;
 import ch.unige.cui.rpg.NullObject;
 
-public class Inventory<...> {
+public class Inventory<T extends Item> {
 
-    private List<ItemInventory<...>> items = new ArrayList<>();
+    private List<ItemInventory<? extends Item>> items = new ArrayList<>();
 
     public Inventory(){}
     
-    public List<ItemInventory<...>> showItems(){
+    public List<ItemInventory<? extends Item>> showItems(){
         //List<ItemInventory<...>> itemsClone = new ArrayList<>(items.size());
         //Collections.copy(itemsClone, items);
-        List<ItemInventory<...>> itemsClone = List.copyOf(items);
+        List<ItemInventory<? extends Item>> itemsClone = List.copyOf(items);
         return itemsClone;
     }
 
     public int getTotal(){
         int total = 0;
-        for(ItemInventory<...> item : items){
+        for(ItemInventory<? extends Item> item : items){
             total += item.getPrice()*item.getAmmount();
         }
         return total;
@@ -36,7 +36,7 @@ public class Inventory<...> {
     }
 
     
-    public void addItemInventoryToInv(ItemInventory<...> it ){
+    public void addItemInventoryToInv(ItemInventory<? extends Item> it ){
         for(ItemInventory i: items){
             if(it.equals(i)){//i.getID() == it.getID()){
                 //si ID trouve: incrementer amount
@@ -49,28 +49,26 @@ public class Inventory<...> {
     }
     
 
-    public void removeItemInventoryFromInv(ItemInventory<...> it ){
-        for(ItemInventory i: items){
-            if(it.equals(i)){//i.getID() == it.getID()){
-                //si ID trouve: incrementer amount
-                i.decAmmount(it.getAmmount());
-                
-                 ...
-
-                return;
+    public void removeItemInventoryFromInv(ItemInventory<? extends Item> it ){
+        for(int i=0;i<items.size();i++){
+            if(items.get(i).equals(it)){
+                items.set(i, items.get(i).decAmmount(it.getAmmount()));
+                if(items.get(i).getAmmount() <= 0){
+                    items.remove(i);
+                }
             }
         }
     }
     
     
-    public void removeAllFromInv(List<ItemInventory<...>> that){ 
+    public void removeAllFromInv(List<ItemInventory<? extends Item>> that){ 
 
         for(ItemInventory e: that){
             this.removeItemInventoryFromInv(e);
         }
     }
     
-    public void addAllToInv( List<ItemInventory<...>> that){
+    public void addAllToInv( List<ItemInventory<? extends Item>> that){
         for(ItemInventory e: that){
             this.addItemInventoryToInv(e);
         }

@@ -1,7 +1,7 @@
 package ch.unige.cui.rpg;
 import java.util.*;
 
-public class PotionMerchant implements Merchant<...>{
+public class PotionMerchant implements Merchant<Potion>{
         private final String name;//identifiant unique du marchand
         //inventaire du marchand
         private Inventory inv = new Inventory();
@@ -15,13 +15,13 @@ public class PotionMerchant implements Merchant<...>{
             return gold;
         }
 
-        public PotionMerchant(String name, Inventory<...> inv, int initGoldAmount) {
+        public PotionMerchant(String name, Inventory<? extends Item> inv, int initGoldAmount) {
             this.name = name;
             this.inv = inv;
             gold = initGoldAmount;
         }
         
-        private boolean customContains(List<ItemInventory<...>> inv1, List<ItemInventory<...>> inv2){
+        private boolean customContains(List<ItemInventory<? extends Item>> inv1, List<ItemInventory<? extends Item>> inv2){
             for(ItemInventory i1: inv1){
                 for(ItemInventory i2: inv2){
                     if(i1.equals(i2)){
@@ -33,7 +33,7 @@ public class PotionMerchant implements Merchant<...>{
         }
 
         //retourne vrai si la vente se conclu
-        public boolean sell( Inventory<...> goods, int offeredAmount  ){ 
+        public boolean sell( Inventory<? extends Item> goods, int offeredAmount  ){ 
             if(offeredAmount < goods.getTotal()){
                 return false;
             }
@@ -49,11 +49,11 @@ public class PotionMerchant implements Merchant<...>{
         }
 
         //Retourne les objets dispos
-        public Inventory<...> showInventory() { 
+        public Inventory<? extends Item> showInventory() { 
             return inv;
         } 
 
-        public int buy( Inventory<...> goods ) {
+        public int buy( Inventory<? extends Item> goods ) {
             int goldValue =  goods.getTotal();
             gold -= goldValue;//le marchand est debite de la somme
             inv.addAllToInv(goods.showItems());
