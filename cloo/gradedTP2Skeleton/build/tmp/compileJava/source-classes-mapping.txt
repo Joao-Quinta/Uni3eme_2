@@ -14,3 +14,7 @@ ch/unige/cui/rpg/DmgType.java
  ch.unige.cui.rpg.DmgType
 ch/unige/cui/rpg/Equipment.java
  ch.unige.cui.rpg.Equipment
+ch/unige/cui/rpg/MagicalObject.java
+ ch.unige.cui.rpg.MagicalObject
+ch/unige/cui/rpg/Game.java
+ ch.unige.cui.rpg.Game

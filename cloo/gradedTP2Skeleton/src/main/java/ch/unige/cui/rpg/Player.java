@@ -23,9 +23,23 @@ public class Player {
   
 
   public void wound(Damage dmg){
+	  Damage afterAbsorb = armor.absorb(dmg);
+	  int actualDamage = afterAbsorb.getMagical() + afterAbsorb.getPhysical();
+	  currentHP = currentHP - actualDamage;
   }
   
   public void attack(Player player){
+	  int physical = 0;
+	  int magical = 0;
+	  if(pc == PlayerClass.WARRIOR) {
+		  physical = pr.getStrength();
+	  }else {
+		  magical = pr.getIntellect();
+	  }
+	  Damage dmgAttack = new Damage(physical, magical);
+	  player.wound(dmgAttack);
+	  
+	  
   }
   
   public CharProfile getPr() {

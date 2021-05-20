@@ -29,12 +29,19 @@ public class MagicalObject implements Equipment{
     public CharProfile getBonusStats() {
         return bonusStats;
     }
-
-    public boolean equip(Player p, ArrayList<Item> arenaInventory){
-        return false;
+    
+    public boolean equip(Player p, ArrayList<? extends Item> arenaInventory){
+    	if (p.getMagicalObj() == EMPTY) {
+    		p.setMagicalObj(this);
+        	arenaInventory.remove(this);
+        	p.setPr(p.getPr().addPr(bonusStats));
+        	return true;
+    	}else {
+    		return false;
+    	}
     }
-
-    public boolean unEquip(Player p, ArrayList<Item> arenaInventory){
+    
+    public boolean unEquip(Player p, ArrayList<? super Item> arenaInventory){
         if(  ! (p.getMagicalObj() == EMPTY) ){
             p.setMagicalObj(EMPTY);
             p.setPr(p.getPr().subPr(bonusStats));
