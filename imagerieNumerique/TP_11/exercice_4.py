@@ -43,3 +43,17 @@ label = ["lena flip h", "lena flip h -> phase", "lena flip h -> magnitude",
          "lena flip h_v", "lena flip h_v -> phase", "lena flip h_v -> magnitude"]
 
 lib.affichage_rows_cols_images(3, 3, imagesToPlot, label)
+
+# (c)
+
+dft_imageLena = np.fft.fft2(imageLena)
+angle_dft_imageLena = np.angle(dft_imageLena)
+magnitude_dft_imageLena = np.abs(dft_imageLena)
+angle_dft_imageLena_flipped = angle_dft_imageLena * -1
+
+lena_phase_flipped = magnitude_dft_imageLena * np.exp(1j * angle_dft_imageLena_flipped)
+reconverted_reconstructed_mag_aldo_phase_lena = np.fft.ifft2(lena_phase_flipped).real
+
+imagesToPlot = [imageLena, reconverted_reconstructed_mag_aldo_phase_lena]
+label = ["image Lena", "flipped phase reconstruction"]
+lib.affichage_rows_cols_images(1, 2, imagesToPlot, label)

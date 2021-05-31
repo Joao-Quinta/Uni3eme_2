@@ -13,7 +13,9 @@ x_axis, y_axis = np.meshgrid(one_axe, one_axe)
 image_1_a = np.sin(2 * np.pi * x_axis / (n / 10))
 dft_image_1_a = np.fft.fftshift(image_1_a)
 magnitude_dft_image_1_a = np.abs(dft_image_1_a)
-
+print(image_1_a)
+print()
+print(magnitude_dft_image_1_a)
 imagesToPlot = [image_1_a, np.log(magnitude_dft_image_1_a + 1)]
 label = ["sinusoidal vertical", "magnitude"]
 
