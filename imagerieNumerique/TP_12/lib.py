@@ -57,55 +57,109 @@ def get_padded_image(imageLena):
     return padded_size
 
 
-def createD(P, Q):
-    D = np.zeros((P, Q))
-    for i in range(P):
-        for j in range(Q):
-            D[i][j] = ((i - P / 2) ** 2) + ((j - Q / 2) ** 2)
-    return D
-
-
-def lowPassFilter(image, cutOff):
-    padded_image = get_padded_image(image)
-    M = padded_image.shape[0]
-    N = padded_image.shape[1]
-
-    dft_padded_image = np.fft.fft2(padded_image)
-
+def createD(M, N):
     u = np.arange(M)
     u = u - M / 2
     v = np.arange(N)
     v = v - N / 2
     V, U = np.meshgrid(v, u)
     D = np.sqrt(np.multiply(U, U) + np.multiply(V, V))
+    return D
+
+
+def idealLowPassFilter(image, cutOff):
+    padded_image = get_padded_image(image)
+    dft_padded_image = np.fft.fft2(padded_image)
+    D = createD(padded_image.shape[0], padded_image.shape[1])
     H = np.zeros((D.shape[0], D.shape[1]))
+
     for i in range(H.shape[0]):
         for j in range(H.shape[1]):
             if D[i][j] <= cutOff:
                 H[i][j] = 1
-    G = np.multiply(H, dft_padded_image)
 
+    G = np.multiply(H, dft_padded_image)
     filtered_image = np.fft.ifft2(G).real
     crop_filtered_image = filtered_image[0:image.shape[0], 0:image.shape[1]]
     return crop_filtered_image
 
 
-"""
-    index_X = np.where(u > M)
-    for val in index_X:
-        u[val] = u[val] - M * 2
+def butterLowPassFilter(image, cutOff, n):
+    padded_image = get_padded_image(image)
+    dft_padded_image = np.fft.fft2(padded_image)
+    D = createD(padded_image.shape[0], padded_image.shape[1])
+    H = np.zeros((D.shape[0], D.shape[1]))
 
-    index_Y = np.where(v > N)
-    for val in index_Y:
-        v[val] = v[val] - N * 2
+    for i in range(H.shape[0]):
+        for j in range(H.shape[1]):
+            H[i][j] = 1 / (1 + ((D[i][j] / cutOff) ** (2 * n)))
 
-    V, U = np.meshgrid(v, u)
+    G = np.multiply(H, dft_padded_image)
+    filtered_image = np.fft.ifft2(G).real
+    crop_filtered_image = filtered_image[0:image.shape[0], 0:image.shape[1]]
+    return crop_filtered_image
 
-    D = np.sqrt(np.multiply(U, U) + np.multiply(V, V))
 
-    print(dft_padded_image.shape)
-    print(D)
-    imagesToPlot = [D]
-    label = ["image Lena"]
-    affichage_rows_cols_images(1, 1, imagesToPlot, label)
-"""
+def gaussianLowPassFilter(image, cutOff):
+    padded_image = get_padded_image(image)
+    dft_padded_image = np.fft.fft2(padded_image)
+    D = createD(padded_image.shape[0], padded_image.shape[1])
+    H = np.zeros((D.shape[0], D.shape[1]))
+
+    for i in range(H.shape[0]):
+        for j in range(H.shape[1]):
+            H[i][j] = np.exp(((D[i][j] ** 2) / 2 * (cutOff ** 2)) * -1)
+
+    G = np.multiply(H, dft_padded_image)
+    filtered_image = np.fft.ifft2(G).real
+    crop_filtered_image = filtered_image[0:image.shape[0], 0:image.shape[1]]
+    return crop_filtered_image
+
+
+def idealHighPassFilter(image, cutOff):
+    padded_image = get_padded_image(image)
+    dft_padded_image = np.fft.fft2(padded_image)
+    D = createD(padded_image.shape[0], padded_image.shape[1])
+    H = np.zeros((D.shape[0], D.shape[1]))
+
+    for i in range(H.shape[0]):
+        for j in range(H.shape[1]):
+            if D[i][j] > cutOff:
+                H[i][j] = 1
+
+    G = np.multiply(H, dft_padded_image)
+    filtered_image = np.fft.ifft2(G).real
+    crop_filtered_image = filtered_image[0:image.shape[0], 0:image.shape[1]]
+    return crop_filtered_image
+
+
+def butterHighPassFilter(image, cutOff, n):
+    padded_image = get_padded_image(image)
+    dft_padded_image = np.fft.fft2(padded_image)
+    D = createD(padded_image.shape[0], padded_image.shape[1])
+    H = np.zeros((D.shape[0], D.shape[1]))
+
+    for i in range(H.shape[0]):
+        for j in range(H.shape[1]):
+            H[i][j] = 1 - (1 / (1 + ((D[i][j] / cutOff) ** (2 * n))))
+
+    G = np.multiply(H, dft_padded_image)
+    filtered_image = np.fft.ifft2(G).real
+    crop_filtered_image = filtered_image[0:image.shape[0], 0:image.shape[1]]
+    return crop_filtered_image
+
+
+def gaussianHighPassFilter(image, cutOff):
+    padded_image = get_padded_image(image)
+    dft_padded_image = np.fft.fft2(padded_image)
+    D = createD(padded_image.shape[0], padded_image.shape[1])
+    H = np.zeros((D.shape[0], D.shape[1]))
+
+    for i in range(H.shape[0]):
+        for j in range(H.shape[1]):
+            H[i][j] = 1 - np.exp(((D[i][j] ** 2) / 2 * (cutOff ** 2)) * -1)
+
+    G = np.multiply(H, dft_padded_image)
+    filtered_image = np.fft.ifft2(G).real
+    crop_filtered_image = filtered_image[0:image.shape[0], 0:image.shape[1]]
+    return crop_filtered_image
