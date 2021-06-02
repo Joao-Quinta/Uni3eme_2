@@ -28,13 +28,13 @@ title(' time domain');
 %  b)
 
  
-Dideal = 250;
+Dideal = 1;
 idealFilter = getFilter('ideal', noisy_lena, Dideal);
 
 
 
 noisy_lena_Fourier=fft2(noisy_lena,size(idealFilter,1),size(idealFilter,2));
-
+noisy = size(noisy_lena_Fourier)
 ideal_noisy_lena_Fourier = idealFilter.*noisy_lena_Fourier;
 
 ideal_noisy_lena=real(ifft2(ideal_noisy_lena_Fourier)); 

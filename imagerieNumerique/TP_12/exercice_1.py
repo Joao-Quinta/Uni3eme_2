@@ -14,10 +14,26 @@ image_padded = lib.padding(imageLena, filter, 'constant')
 image_padded_filtered = lib.image_filtering(image_padded, filter)
 image_padded_filtered = lib.get_cropped_image(image_padded_filtered, -1)
 
-imagesToPlot = [imageLena, noisyGrayLena, image_padded_filtered]
-label = ["image Lena", "noisy lena - sigma = 20", "denoising - gaussian filter"]
-lib.affichage_rows_cols_images(1, 3, imagesToPlot, label)
 
-mse = lib.metric.mean_squared_error(noisyGrayLena, image_padded_filtered)
+mse = lib.metric.mean_squared_error(imageLena, noisyGrayLena)
+print(mse)
 
 # b
+i=600
+"""
+mse_a = []
+while i < 980:
+    ideal_lowpass_filter = lib.lowPassFilter(noisyGrayLena, 980)
+    mse_a.append(lib.metric.mean_squared_error(ideal_lowpass_filter, imageLena))
+    i = i + 1
+    print(i)
+
+print(mse_a.index(min(mse_a)))
+print(mse_a.index(min(mse_a)) + 600)
+"""
+ideal_lowpass_filter = lib.lowPassFilter(noisyGrayLena, 590)
+mse = lib.metric.mean_squared_error(imageLena, ideal_lowpass_filter)
+print(mse)
+imagesToPlot = [imageLena, noisyGrayLena, image_padded_filtered, ideal_lowpass_filter]
+label = ["image Lena", " noisy", "a", "b"]
+lib.affichage_rows_cols_images(1, 4, imagesToPlot, label)
