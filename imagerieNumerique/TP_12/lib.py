@@ -108,7 +108,7 @@ def gaussianLowPassFilter(image, cutOff):
 
     for i in range(H.shape[0]):
         for j in range(H.shape[1]):
-            H[i][j] = np.exp(((D[i][j] ** 2) / 2 * (cutOff ** 2)) * -1)
+            H[i][j] = np.exp(((D[i][j] ** 2) / (2 * (cutOff ** 2))) * -1)
 
     G = np.multiply(H, dft_padded_image)
     filtered_image = np.fft.ifft2(G).real
@@ -157,7 +157,7 @@ def gaussianHighPassFilter(image, cutOff):
 
     for i in range(H.shape[0]):
         for j in range(H.shape[1]):
-            H[i][j] = 1 - np.exp(((D[i][j] ** 2) / 2 * (cutOff ** 2)) * -1)
+            H[i][j] = 1 - np.exp(((D[i][j] ** 2) / (2 * (cutOff ** 2))) * -1)
 
     G = np.multiply(H, dft_padded_image)
     filtered_image = np.fft.ifft2(G).real

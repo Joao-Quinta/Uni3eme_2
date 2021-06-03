@@ -27,7 +27,7 @@ title(' time domain');
 %  b)
 
  
-Dideal = 10;
+Dideal = 250;
 idealFilter = getFilter('ideal', noisy_lena, Dideal);
 
 

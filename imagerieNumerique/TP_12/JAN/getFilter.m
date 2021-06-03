@@ -22,6 +22,9 @@ v(idy) = v(idy) - N;
 [V, U] = meshgrid(v, u);
 
 D = sqrt(U.^2 + V.^2);
+figure
+imshow(D);
+title(' SEE D');
 
 
 switch type
