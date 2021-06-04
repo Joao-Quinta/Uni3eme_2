@@ -30,7 +30,6 @@ label = ["image 1", "image 2", "image 3", "image 4", "magnitude image 1", "magni
          "magnitude image 4"]
 lib.affichage_rows_cols_images(2, 4, imagesToPlot, label)
 
-
 # image 1 -> notch
 centers = [[123, -105, 7], [135, 125, 5], [14, -105, 5], [-20, -105, 5], [50, -105, 5]]
 filter = lib.notchIdealFilter_(dft_image_1, centers)
