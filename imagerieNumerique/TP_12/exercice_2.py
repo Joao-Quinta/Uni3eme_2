@@ -19,7 +19,7 @@ lib.affichage_rows_cols_images(1, 2, imagesToPlot, label)
 
 # actual a
 
-filter = 1 / 9 * lib.np.array([[1, 1, 1], [1, 1, 1], [1, 1, 1]])
+filter = 1 / 16 * lib.np.array([[1, 2, 1], [2, 4, 2], [1, 2, 1]])
 imageLena_pad_filtered_box_pad_filtre_gauss_ = lib.image_filtering(imageLena_pad_filtered_box_, filter)
 imageLena_pad_filtered_box_pad_filtre_gauss = lib.get_cropped_image(imageLena_pad_filtered_box_pad_filtre_gauss_, -1)
 

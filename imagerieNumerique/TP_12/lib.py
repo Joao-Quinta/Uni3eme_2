@@ -278,7 +278,31 @@ def compute_D1_D2(u, v, M, N, val0, val1, type):
         return np.sqrt((u - M / 2 + val0) ** 2 + (v - N / 2 + val1) ** 2)
 
 
-def notchIdealFilter(image, cutOff, centers):
+def notchIdealFilter(image, centers):
+    dft_image = np.fft.fft2(image)
+    M = image.shape[0]
+    N = image.shape[1]
+    H = np.ones((M, N))
+    # D1 = np.sqrt((u - M/2 - centers[0][0])**2 + (v - N/2 - centers[0][1])**2))
+    # D2 = np.sqrt((u - M/2 + centers[0][0])**2 + (v - N/2 + centers[0][1])**2))
+
+    for i in range(H.shape[0]):
+        for j in range(H.shape[1]):
+            res = 1
+            for center in centers:
+                if compute_D1_D2(i, j, M, N, center[0], center[1], 1) <= center[2] or compute_D1_D2(i, j, M, N,
+                                                                                                 center[0],
+                                                                                                 center[1],
+                                                                                                 0) <= center[2]:
+                    res = res * 0
+            H[i][j] = res
+
+    G = np.multiply(H, dft_image)
+    filtered_image = np.fft.ifft2(G).real
+    return filtered_image
+
+
+def notchIdealFilter_(image, centers):
     dft_image = np.fft.fft2(image)
     M = image.shape[0]
     N = image.shape[1]
@@ -289,16 +313,13 @@ def notchIdealFilter(image, cutOff, centers):
         for j in range(H.shape[1]):
             res = 1
             for center in centers:
-                if compute_D1_D2(i, j, M, N, center[0], center[1], 1) <= cutOff or compute_D1_D2(i, j, M, N,
+                if compute_D1_D2(i, j, M, N, center[0], center[1], 1) <= center[2] or compute_D1_D2(i, j, M, N,
                                                                                                  center[0],
                                                                                                  center[1],
-                                                                                                 0) <= cutOff:
+                                                                                                 0) <= center[2]:
                     res = res * 0
             H[i][j] = res
     return H
-    G = np.multiply(H, dft_image)
-    filtered_image = np.fft.ifft2(G).real
-    return filtered_image
 
 
 """
