@@ -151,3 +151,114 @@ def gaussianHighPassFilter(image, cutOff):
     G = np.multiply(H, dft_image)
     filtered_image = np.fft.ifft2(G).real
     return filtered_image
+
+
+def bandRejectIdeal(image, cutOff, bandWidth):
+    dft_image = np.fft.fft2(image)
+    D = createD(image.shape[0], image.shape[1])  # no pad ?
+    H = np.ones((D.shape[0], D.shape[1]))
+    lBandWidth = cutOff - bandWidth / 2
+    hBandWidth = cutOff + bandWidth / 2
+
+    for i in range(H.shape[0]):
+        for j in range(H.shape[1]):
+            if lBandWidth <= D[i][j] <= hBandWidth:
+                H[i][j] = 0
+    return H
+
+    G = np.multiply(H, dft_image)
+    filtered_image = np.fft.ifft2(G).real
+    return filtered_image
+
+
+def bandRejectButter(image, cutOff, bandWidth, n):
+    dft_image = np.fft.fft2(image)
+    D = createD(image.shape[0], image.shape[1])  # no pad ?
+    H = np.zeros((D.shape[0], D.shape[1]))
+
+    for i in range(H.shape[0]):
+        for j in range(H.shape[1]):
+            H[i][j] = 1 / (1 + (((D[i][j] * bandWidth) / ((D[i][j] ** 2) - (cutOff ** 2))) ** (2 * n)))
+
+    return H
+    G = np.multiply(H, dft_image)
+    filtered_image = np.fft.ifft2(G).real
+    return filtered_image
+
+
+def bandRejectGaussian(image, cutOff, bandWidth):
+    dft_image = np.fft.fft2(image)
+    D = createD(image.shape[0], image.shape[1])  # no pad ?
+    H = np.zeros((D.shape[0], D.shape[1]))
+
+    for i in range(H.shape[0]):
+        for j in range(H.shape[1]):
+            H[i][j] = 1 - np.exp(-1 * ((((D[i][j] ** 2) - (cutOff ** 2)) / (D[i][j] * bandWidth)) ** 2))
+    return H
+
+    G = np.multiply(H, dft_image)
+    filtered_image = np.fft.ifft2(G).real
+    return filtered_image
+
+
+def bandPassIdeal(image, cutOff, bandWidth):
+    dft_image = np.fft.fft2(image)
+    D = createD(image.shape[0], image.shape[1])  # no pad ?
+    H = np.zeros((D.shape[0], D.shape[1]))
+    lBandWidth = cutOff - bandWidth / 2
+    hBandWidth = cutOff + bandWidth / 2
+
+    for i in range(H.shape[0]):
+        for j in range(H.shape[1]):
+            if lBandWidth <= D[i][j] <= hBandWidth:
+                H[i][j] = 1
+    return H
+
+    G = np.multiply(H, dft_image)
+    filtered_image = np.fft.ifft2(G).real
+    return filtered_image
+
+
+def bandPassButter(image, cutOff, bandWidth, n):
+    dft_image = np.fft.fft2(image)
+    D = createD(image.shape[0], image.shape[1])  # no pad ?
+    H = np.zeros((D.shape[0], D.shape[1]))
+
+    for i in range(H.shape[0]):
+        for j in range(H.shape[1]):
+            H[i][j] = 1 - (1 / (1 + (((D[i][j] * bandWidth) / ((D[i][j] ** 2) - (cutOff ** 2))) ** (2 * n))))
+
+    return H
+    G = np.multiply(H, dft_image)
+    filtered_image = np.fft.ifft2(G).real
+    return filtered_image
+
+
+def bandPassGaussian(image, cutOff, bandWidth):
+    dft_image = np.fft.fft2(image)
+    D = createD(image.shape[0], image.shape[1])  # no pad ?
+    H = np.zeros((D.shape[0], D.shape[1]))
+
+    for i in range(H.shape[0]):
+        for j in range(H.shape[1]):
+            H[i][j] = 1 - (1 - np.exp(-1 * ((((D[i][j] ** 2) - (cutOff ** 2)) / (D[i][j] * bandWidth)) ** 2)))
+    return H
+
+    G = np.multiply(H, dft_image)
+    filtered_image = np.fft.ifft2(G).real
+    return filtered_image
+
+
+"""
+def gaussianHighPassFilter(image, cutOff):
+    dft_image = np.fft.fft2(image)
+    D = createD(image.shape[0], image.shape[1])
+    H = np.zeros((D.shape[0], D.shape[1]))
+
+    for i in range(H.shape[0]):
+        for j in range(H.shape[1]):
+            H[i][j] = 1 - np.exp(((D[i][j] ** 2) / (2 * (cutOff ** 2))) * -1)
+
+    G = np.multiply(H, dft_image)
+    filtered_image = np.fft.ifft2(G).real
+    return filtered_image"""
