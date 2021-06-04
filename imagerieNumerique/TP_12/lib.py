@@ -287,11 +287,14 @@ def notchIdealFilter(image, cutOff, centers):
     # D2 = np.sqrt((u - M/2 + centers[0][0])**2 + (v - N/2 + centers[0][1])**2))
     for i in range(H.shape[0]):
         for j in range(H.shape[1]):
-            if compute_D1_D2(i, j, M, N, centers[0][0], centers[0][1], 1) <= cutOff or compute_D1_D2(i, j, M, N,
-                                                                                                     centers[0][0],
-                                                                                                     centers[0][1],
-                                                                                                     0) <= cutOff:
-                H[i][j] = 0
+            res = 1
+            for center in centers:
+                if compute_D1_D2(i, j, M, N, center[0], center[1], 1) <= cutOff or compute_D1_D2(i, j, M, N,
+                                                                                                 center[0],
+                                                                                                 center[1],
+                                                                                                 0) <= cutOff:
+                    res = res * 0
+            H[i][j] = res
     return H
     G = np.multiply(H, dft_image)
     filtered_image = np.fft.ifft2(G).real
