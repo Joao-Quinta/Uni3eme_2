@@ -4,6 +4,7 @@ from skimage import io
 import numpy as np
 import copy
 import skimage.metrics as metric
+from scipy import signal
 
 
 def loadImag(path):
@@ -249,16 +250,70 @@ def bandPassGaussian(image, cutOff, bandWidth):
     return filtered_image
 
 
-"""
-def gaussianHighPassFilter(image, cutOff):
+def medianFiltering(image, N):
+    imageRes = np.zeros((image.shape[0], image.shape[1]))
+    boxValues = []
+    for i in range(image.shape[0]):
+        for j in range(image.shape[1]):
+            for z in range(N):
+                if i + z - N < 0 or i + z - N > image.shape[0] - 1:
+                    for _ in range(N):
+                        boxValues.append(0)
+                else:
+                    if j + z - N < 0 or j + N > image.shape[1] - 1:
+                        boxValues.append(0)
+                    else:
+                        for k in range(N):
+                            boxValues.append(image[i + z - N][j + k - N])
+            boxValues.sort()
+            imageRes[i][j] = boxValues[len(boxValues) // 2]
+            boxValues = []
+    return imageRes
+
+
+def compute_D1_D2(u, v, M, N, val0, val1, type):
+    if type == 1:
+        return np.sqrt((u - M / 2 - val0) ** 2 + (v - N / 2 - val1) ** 2)
+    else:
+        return np.sqrt((u - M / 2 + val0) ** 2 + (v - N / 2 + val1) ** 2)
+
+
+def notchIdealFilter(image, cutOff, centers):
     dft_image = np.fft.fft2(image)
-    D = createD(image.shape[0], image.shape[1])
+    M = image.shape[0]
+    N = image.shape[1]
+    H = np.ones((M, N))
+    # D1 = np.sqrt((u - M/2 - centers[0][0])**2 + (v - N/2 - centers[0][1])**2))
+    # D2 = np.sqrt((u - M/2 + centers[0][0])**2 + (v - N/2 + centers[0][1])**2))
+    for i in range(H.shape[0]):
+        for j in range(H.shape[1]):
+            if compute_D1_D2(i, j, M, N, centers[0][0], centers[0][1], 1) <= cutOff or compute_D1_D2(i, j, M, N,
+                                                                                                     centers[0][0],
+                                                                                                     centers[0][1],
+                                                                                                     0) <= cutOff:
+                H[i][j] = 0
+    return H
+    G = np.multiply(H, dft_image)
+    filtered_image = np.fft.ifft2(G).real
+    return filtered_image
+
+
+"""
+def bandPassIdeal(image, cutOff, bandWidth):
+    dft_image = np.fft.fft2(image)
+    D = createD(image.shape[0], image.shape[1])  # no pad ?
     H = np.zeros((D.shape[0], D.shape[1]))
+    lBandWidth = cutOff - bandWidth / 2
+    hBandWidth = cutOff + bandWidth / 2
 
     for i in range(H.shape[0]):
         for j in range(H.shape[1]):
-            H[i][j] = 1 - np.exp(((D[i][j] ** 2) / (2 * (cutOff ** 2))) * -1)
+            if lBandWidth <= D[i][j] <= hBandWidth:
+                H[i][j] = 1
+    return H
 
     G = np.multiply(H, dft_image)
     filtered_image = np.fft.ifft2(G).real
-    return filtered_image"""
+    return filtered_image
+
+"""
