@@ -1,20 +1,18 @@
-def t(x):
-    print()
+def tt(x, val):
     if x == -1:
-        print("x = -1",1)
         return 1
     elif x == 0:
-        print("x = 0",0)
         return 0
     elif x == 1:
-        print("x = 1",2)
         return 2
     else:
-        temp = t(x - 3) / (x * x - 1)
-        print("ici - x = ", x ," ",temp)
-        return temp
+        if x == val:
+            for i in range(-1, x):
+                print(x, " a appele -> ", i, " res -> ", tt(i, val))
+        res = tt(x - 3, val) / (x * x - 1)
+        if x == val:
+            print(x, " a appele -> ", val, " res -> ", res)
+        return res
 
 
-l = t(5)
-
-print(" l = ", l)
+tt(5, 5)
