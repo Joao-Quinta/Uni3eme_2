@@ -1,6 +1,5 @@
 package ch.unige.cui.rpg;
 
-import java.util.ArrayList;
 
 public class Mage extends GameChar{
 	protected Ressource mana;

@@ -1,10 +1,8 @@
 package ch.unige.cui.rpg;
 
-import java.util.ArrayList;
 
 public class Warrior extends GameChar{
 	private Ressource rage;
-	private ArrayList<Spell> spellBook;
 	
 	public Warrior(String name, int maxHp, int maxRage) {
 		super(name, maxHp);
@@ -19,10 +17,6 @@ public class Warrior extends GameChar{
 	@Override
 	protected Ressource getRage() {
 		return rage;
-	}
-	
-	public void addToSpellBook(Spell newSpell) {
-		spellBook.add(newSpell);
 	}
 	
 	public String toString() {

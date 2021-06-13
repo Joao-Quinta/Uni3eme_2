@@ -50,8 +50,10 @@ public abstract class GameChar {
 	public boolean hasHealth() {
 		return true;
 	}
-	
 	public boolean hasMana() {
+		return false;
+	}
+	public boolean hasRage() {
 		return false;
 	}
 	
@@ -59,9 +61,7 @@ public abstract class GameChar {
 		return null;
 	}
 	
-	public boolean hasRage() {
-		return false;
-	}
+	
 	
 	protected Ressource getRage() {
 		return null;
