@@ -20,44 +20,30 @@ public class Game{
 		System.out.println(warriorChar.toString());
 		System.out.println();		
 		
-		mageChar.cast(frostbolt);
+		System.out.println("mage tente de cast Frostbolt sur warrior :");
+		System.out.println(mageChar.cast(frostbolt));
 		
-		System.out.println("mage cast Frostbolt sur warrion");
+		System.out.println();
 		System.out.println(mageChar.toString());
 		System.out.println(warriorChar.toString());
 		System.out.println();
 		
-		warriorChar.cast(healthPot);
+		System.out.println("warrior tente de boir une potion de vie :");
+		System.out.println(warriorChar.cast(healthPot));
 		
-		System.out.println("warrior consomme une potion de vie");
+		System.out.println();
 		System.out.println(mageChar.toString());
 		System.out.println(warriorChar.toString());
 		System.out.println();
 		
-		warriorChar.cast(charge);
+		System.out.println("warrior tente de cast Charge sur le mage");
+		System.out.println(warriorChar.cast(charge));
 		
-		System.out.println("warrior cast Charge sur le mage");
+		System.out.println();
 		System.out.println(mageChar.toString());
 		System.out.println(warriorChar.toString());
 		System.out.println();
 		
-		
-		/*
-		Mage mageChar = new Mage("mage", 100, 100);
-		System.out.println(mageChar.toString());
-		
-		Spell frostbolt = new Spell(-10, 20, RessourceType.MANA);
-		
-		mageChar.cast(frostbolt);
-		
-		System.out.println(mageChar.toString());
-		
-		Potion manaPotion = new Potion(20, RessourceType.MANA);
-		
-		mageChar.cast(manaPotion);
-		
-		System.out.println(mageChar.toString());
-		*/
 
 	}
 }

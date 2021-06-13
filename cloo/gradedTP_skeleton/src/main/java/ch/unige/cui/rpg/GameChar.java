@@ -61,8 +61,6 @@ public abstract class GameChar {
 		return null;
 	}
 	
-	
-	
 	protected Ressource getRage() {
 		return null;
 	}

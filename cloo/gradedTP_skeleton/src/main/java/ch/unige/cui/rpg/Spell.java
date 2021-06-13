@@ -75,16 +75,19 @@ public class Spell implements Modifier{
 	@Override
 	public void applyModification(GameChar player, GameChar target) {
 		GameChar toChange; 
+		// on défini toChange = GameChar à qui on applique les modifications
 		if(this.target == PossibleTarget.PLAYER) {
 			toChange = player;
 		}else {
 			toChange = target;
 		}
+		//selon le typePost, on sait quelle ressource du joueur il faut modifier
 		switch(this.typePost) {
 		case HEALTH:
 			if(toChange.hasHealth()) {
+				// cas de health -> pareil pour les autres
 				Ressource health = toChange.health;
-				int newVal = health.getVal() + pos;
+				int newVal = health.getVal() + pos;// on défini la nouvelle valeur
 				if(newVal <= health.getMaxVal()) {
 					if(newVal > 0) {
 						health.setVal(newVal);
@@ -94,6 +97,8 @@ public class Spell implements Modifier{
 				}else {
 					health.setVal(health.getMaxVal());
 				}
+				//on véfirie bien que la valeur est entre 0, le min, et le maxVal, 
+				//on pourrait aussi mettre -> health.setVal(Math.max(0, Math.min(health.getMaxVal(), newVal)));
 			}
 			
 		case MANA:
