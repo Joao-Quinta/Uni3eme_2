@@ -1,0 +1,24 @@
+name: DM_project
+channels:
+  - rdkit
+  - defaults
+dependencies:
+  - python=3.7
+  - pip
+  - numpy
+  - pandas
+  - matplotlib
+  - ipython
+  - jsonschema
+  - jupyter
+  - jupyterlab
+  - rdkit=2020.03.1.0
+  - tqdm
+  - pip:
+    - docopt
+    - ipdb
+    - tabulate
+    - scikit-learn
+    - watermark==2
+    - altair==4.1
+    - vega==3.4.0
