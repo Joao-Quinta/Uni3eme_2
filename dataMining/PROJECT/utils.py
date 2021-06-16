@@ -26,6 +26,7 @@ def load_data(data, properties):
 
     return X_train, X_test, y_train, y_test
 
+
 def get_smiles_encodings(file_path):
     """
     Returns smiles, alphabet and length of largest molecule in SMILES given a file containing SMILES molecules.
@@ -45,7 +46,6 @@ def get_smiles_encodings(file_path):
     smiles_alphabet.append(' ')  # for padding
 
     largest_smiles_len = len(max(smiles_list, key=len))
-
 
     return smiles_list, smiles_alphabet, largest_smiles_len
 
