@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<<<<<<< Updated upstream
 <testsuite name="JUnit Jupiter" tests="0" skipped="0" failures="0" errors="0" time="0.002" hostname="joao-quinta-Lenovo" timestamp="2021-06-13T16:18:07">
+=======
+<testsuite name="JUnit Jupiter" tests="8" skipped="0" failures="0" errors="0" time="0.04" hostname="joao-quinta-Lenovo" timestamp="2021-06-13T16:12:05">
+>>>>>>> Stashed changes
 <properties>
 <property name="awt.toolkit" value="sun.awt.X11.XToolkit"/>
 <property name="file.encoding" value="UTF-8"/>
@@ -55,6 +59,57 @@
 <property name="user.timezone" value="Europe/Zurich"/>
 <property name="user.variant" value=""/>
 </properties>
+<<<<<<< Updated upstream
+=======
+<testcase name="warPassLvlTest()" classname="RPGTest" time="0.008">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:RPGTest]/[method:warPassLvlTest()]
+display-name: (unit test) warPassLvlTest:
+]]></system-out>
+</testcase>
+<testcase name="lvlUpStatTestBoth()" classname="RPGTest" time="0.002">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:RPGTest]/[method:lvlUpStatTestBoth()]
+display-name: (scenario) lvlUpStatTestBoth:
+]]></system-out>
+</testcase>
+<testcase name="magePassLvlTest()" classname="RPGTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:RPGTest]/[method:magePassLvlTest()]
+display-name: (unit test) magePassLvlTest:
+]]></system-out>
+</testcase>
+<testcase name="lvlUpStatTestWarOnly()" classname="RPGTest" time="0.001">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:RPGTest]/[method:lvlUpStatTestWarOnly()]
+display-name: (scenario) lvlUpStatTestWarOnly:
+]]></system-out>
+</testcase>
+<testcase name="notPassLvlTest()" classname="RPGTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:RPGTest]/[method:notPassLvlTest()]
+display-name: (unit test) notPassLvlTest:
+]]></system-out>
+</testcase>
+<testcase name="magicalProtectionTest()" classname="RPGTest" time="0.001">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:RPGTest]/[method:magicalProtectionTest()]
+display-name: (unit test) MageRobes magical prot only:
+]]></system-out>
+</testcase>
+<testcase name="lvlUpStatTestMageOnly()" classname="RPGTest" time="0">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:RPGTest]/[method:lvlUpStatTestMageOnly()]
+display-name: (scenario) lvlUpStatTestMageOnly:
+]]></system-out>
+</testcase>
+<testcase name="lvlUpXPTest()" classname="RPGTest" time="0.001">
+<system-out><![CDATA[
+unique-id: [engine:junit-jupiter]/[class:RPGTest]/[method:lvlUpXPTest()]
+display-name: (scenario) lvlUp xp test:
+]]></system-out>
+</testcase>
+>>>>>>> Stashed changes
 <system-out><![CDATA[
 unique-id: [engine:junit-jupiter]
 display-name: JUnit Jupiter
