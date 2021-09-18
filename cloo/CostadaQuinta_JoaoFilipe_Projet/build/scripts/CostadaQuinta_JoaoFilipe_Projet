@@ -18,7 +18,7 @@
 
 ##############################################################################
 ##
-##  gradedTP_skeleton start up script for UN*X
+##  CostadaQuinta_JoaoFilipe_Projet start up script for UN*X
 ##
 ##############################################################################
 
@@ -40,10 +40,10 @@ cd "`dirname \"$PRG\"`/.." >/dev/null
 APP_HOME="`pwd -P`"
 cd "$SAVED" >/dev/null
 
-APP_NAME="gradedTP_skeleton"
+APP_NAME="CostadaQuinta_JoaoFilipe_Projet"
 APP_BASE_NAME=`basename "$0"`
 
-# Add default JVM options here. You can also use JAVA_OPTS and GRADED_TP_SKELETON_OPTS to pass JVM options to this script.
+# Add default JVM options here. You can also use JAVA_OPTS and COSTADA_QUINTA_JOAO_FILIPE_PROJET_OPTS to pass JVM options to this script.
 DEFAULT_JVM_OPTS=""
 
 # Use the maximum available, or set MAX_FD != -1 to use that value.
@@ -80,7 +80,7 @@ case "`uname`" in
     ;;
 esac
 
-CLASSPATH=$APP_HOME/lib/gradedTP_skeleton.jar
+CLASSPATH=$APP_HOME/lib/CostadaQuinta_JoaoFilipe_Projet.jar
 
 
 # Determine the Java command to use to start the JVM.
@@ -180,6 +180,6 @@ save () {
 APP_ARGS=`save "$@"`
 
 # Collect all arguments for the java command, following the shell quoting and substitution rules
-eval set -- $DEFAULT_JVM_OPTS $JAVA_OPTS $GRADED_TP_SKELETON_OPTS -classpath "\"$CLASSPATH\"" ch.unige.cui.rpg.Game "$APP_ARGS"
+eval set -- $DEFAULT_JVM_OPTS $JAVA_OPTS $COSTADA_QUINTA_JOAO_FILIPE_PROJET_OPTS -classpath "\"$CLASSPATH\"" ch.unige.cui.rpg.Game "$APP_ARGS"
 
 exec "$JAVACMD" "$@"

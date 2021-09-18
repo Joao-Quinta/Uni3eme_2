@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="JUnit Jupiter" tests="8" skipped="0" failures="0" errors="0" time="0.035" hostname="joao-quinta-Lenovo" timestamp="2021-04-15T11:25:19">
+<testsuite name="JUnit Jupiter" tests="0" skipped="0" failures="0" errors="0" time="0.002" hostname="joao-quinta-Lenovo" timestamp="2021-06-13T16:18:07">
 <properties>
 <property name="awt.toolkit" value="sun.awt.X11.XToolkit"/>
 <property name="file.encoding" value="UTF-8"/>
 <property name="file.separator" value="/"/>
 <property name="java.awt.graphicsenv" value="sun.awt.X11GraphicsEnvironment"/>
 <property name="java.awt.printerjob" value="sun.print.PSPrinterJob"/>
-<property name="java.class.path" value="/home/joao_quinta/Documents/GitHub/Uni3eme_2/cloo/gradedTP_skeleton/build/classes/java/test:/home/joao_quinta/Documents/GitHub/Uni3eme_2/cloo/gradedTP_skeleton/build/resources/test:/home/joao_quinta/Documents/GitHub/Uni3eme_2/cloo/gradedTP_skeleton/build/classes/java/main:/home/joao_quinta/Documents/GitHub/Uni3eme_2/cloo/gradedTP_skeleton/build/resources/main:/home/joao_quinta/.gradle/caches/modules-2/files-2.1/org.junit.jupiter/junit-jupiter-engine/5.0.1/e22d2bf87f43fb03fee14dea447b2a14f41b095f/junit-jupiter-engine-5.0.1.jar:/home/joao_quinta/.gradle/caches/modules-2/files-2.1/org.junit.jupiter/junit-jupiter-api/5.0.1/30fbf4448c594cb45d8e91630d6bb7f465906b88/junit-jupiter-api-5.0.1.jar:/home/joao_quinta/.gradle/caches/modules-2/files-2.1/org.junit.platform/junit-platform-engine/1.0.1/4ce0a37866312c18ea3f45818f2faec077e46e0/junit-platform-engine-1.0.1.jar:/home/joao_quinta/.gradle/caches/modules-2/files-2.1/org.opentest4j/opentest4j/1.0.0/6f09c598e9ff64bf0ce2fa7e7de49a99ba83c0b4/opentest4j-1.0.0.jar:/home/joao_quinta/.gradle/caches/modules-2/files-2.1/org.junit.platform/junit-platform-commons/1.0.1/3632e4a74a43d3ae8d29e6fa172cbc29590bda03/junit-platform-commons-1.0.1.jar:/home/joao_quinta/.gradle/caches/modules-2/files-2.1/org.junit.platform/junit-platform-console/1.0.1/3892e08f30d92a88addc73f3a5f9575be864cec/junit-platform-console-1.0.1.jar:/home/joao_quinta/.gradle/caches/modules-2/files-2.1/org.junit.platform/junit-platform-launcher/1.0.1/5562631a34e4eefefdad04cdd49a50774d6ac777/junit-platform-launcher-1.0.1.jar"/>
+<property name="java.class.path" value="/home/joao_quinta/Documents/GitHub/Uni3eme_2/cloo/CostadaQuinta_JoaoFilipe_Projet/build/classes/java/test:/home/joao_quinta/Documents/GitHub/Uni3eme_2/cloo/CostadaQuinta_JoaoFilipe_Projet/build/resources/test:/home/joao_quinta/Documents/GitHub/Uni3eme_2/cloo/CostadaQuinta_JoaoFilipe_Projet/build/classes/java/main:/home/joao_quinta/Documents/GitHub/Uni3eme_2/cloo/CostadaQuinta_JoaoFilipe_Projet/build/resources/main:/home/joao_quinta/.gradle/caches/modules-2/files-2.1/org.junit.jupiter/junit-jupiter-engine/5.0.1/e22d2bf87f43fb03fee14dea447b2a14f41b095f/junit-jupiter-engine-5.0.1.jar:/home/joao_quinta/.gradle/caches/modules-2/files-2.1/org.junit.jupiter/junit-jupiter-api/5.0.1/30fbf4448c594cb45d8e91630d6bb7f465906b88/junit-jupiter-api-5.0.1.jar:/home/joao_quinta/.gradle/caches/modules-2/files-2.1/org.junit.platform/junit-platform-engine/1.0.1/4ce0a37866312c18ea3f45818f2faec077e46e0/junit-platform-engine-1.0.1.jar:/home/joao_quinta/.gradle/caches/modules-2/files-2.1/org.opentest4j/opentest4j/1.0.0/6f09c598e9ff64bf0ce2fa7e7de49a99ba83c0b4/opentest4j-1.0.0.jar:/home/joao_quinta/.gradle/caches/modules-2/files-2.1/org.junit.platform/junit-platform-commons/1.0.1/3632e4a74a43d3ae8d29e6fa172cbc29590bda03/junit-platform-commons-1.0.1.jar:/home/joao_quinta/.gradle/caches/modules-2/files-2.1/org.junit.platform/junit-platform-console/1.0.1/3892e08f30d92a88addc73f3a5f9575be864cec/junit-platform-console-1.0.1.jar:/home/joao_quinta/.gradle/caches/modules-2/files-2.1/org.junit.platform/junit-platform-launcher/1.0.1/5562631a34e4eefefdad04cdd49a50774d6ac777/junit-platform-launcher-1.0.1.jar"/>
 <property name="java.class.version" value="55.0"/>
 <property name="java.home" value="/usr/lib/jvm/java-11-openjdk-amd64"/>
 <property name="java.io.tmpdir" value="/tmp"/>
@@ -42,67 +42,19 @@
 <property name="sun.cpu.isalist" value=""/>
 <property name="sun.desktop" value="gnome"/>
 <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
-<property name="sun.java.command" value="org.junit.platform.console.ConsoleLauncher --details NONE --scan-class-path /home/joao_quinta/Documents/GitHub/Uni3eme_2/cloo/gradedTP_skeleton/build/classes/java/main:/home/joao_quinta/Documents/GitHub/Uni3eme_2/cloo/gradedTP_skeleton/build/resources/main:/home/joao_quinta/Documents/GitHub/Uni3eme_2/cloo/gradedTP_skeleton/build/classes/java/test:/home/joao_quinta/Documents/GitHub/Uni3eme_2/cloo/gradedTP_skeleton/build/resources/test -n ^.*Tests?$ --reports-dir /home/joao_quinta/Documents/GitHub/Uni3eme_2/cloo/gradedTP_skeleton/build/test-results/junit-platform"/>
+<property name="sun.java.command" value="org.junit.platform.console.ConsoleLauncher --details NONE --scan-class-path /home/joao_quinta/Documents/GitHub/Uni3eme_2/cloo/CostadaQuinta_JoaoFilipe_Projet/build/classes/java/main:/home/joao_quinta/Documents/GitHub/Uni3eme_2/cloo/CostadaQuinta_JoaoFilipe_Projet/build/resources/main:/home/joao_quinta/Documents/GitHub/Uni3eme_2/cloo/CostadaQuinta_JoaoFilipe_Projet/build/classes/java/test:/home/joao_quinta/Documents/GitHub/Uni3eme_2/cloo/CostadaQuinta_JoaoFilipe_Projet/build/resources/test -n ^.*Tests?$ --reports-dir /home/joao_quinta/Documents/GitHub/Uni3eme_2/cloo/CostadaQuinta_JoaoFilipe_Projet/build/test-results/junit-platform"/>
 <property name="sun.java.launcher" value="SUN_STANDARD"/>
 <property name="sun.jnu.encoding" value="UTF-8"/>
 <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
 <property name="sun.os.patch.level" value="unknown"/>
 <property name="user.country" value="GB"/>
-<property name="user.dir" value="/home/joao_quinta/Documents/GitHub/Uni3eme_2/cloo/gradedTP_skeleton"/>
+<property name="user.dir" value="/home/joao_quinta/Documents/GitHub/Uni3eme_2/cloo/CostadaQuinta_JoaoFilipe_Projet"/>
 <property name="user.home" value="/home/joao_quinta"/>
 <property name="user.language" value="en"/>
 <property name="user.name" value="joao_quinta"/>
 <property name="user.timezone" value="Europe/Zurich"/>
 <property name="user.variant" value=""/>
 </properties>
-<testcase name="warPassLvlTest()" classname="RPGTest" time="0.007">
-<system-out><![CDATA[
-unique-id: [engine:junit-jupiter]/[class:RPGTest]/[method:warPassLvlTest()]
-display-name: (unit test) warPassLvlTest:
-]]></system-out>
-</testcase>
-<testcase name="lvlUpStatTestBoth()" classname="RPGTest" time="0.002">
-<system-out><![CDATA[
-unique-id: [engine:junit-jupiter]/[class:RPGTest]/[method:lvlUpStatTestBoth()]
-display-name: (scenario) lvlUpStatTestBoth:
-]]></system-out>
-</testcase>
-<testcase name="magePassLvlTest()" classname="RPGTest" time="0">
-<system-out><![CDATA[
-unique-id: [engine:junit-jupiter]/[class:RPGTest]/[method:magePassLvlTest()]
-display-name: (unit test) magePassLvlTest:
-]]></system-out>
-</testcase>
-<testcase name="lvlUpStatTestWarOnly()" classname="RPGTest" time="0">
-<system-out><![CDATA[
-unique-id: [engine:junit-jupiter]/[class:RPGTest]/[method:lvlUpStatTestWarOnly()]
-display-name: (scenario) lvlUpStatTestWarOnly:
-]]></system-out>
-</testcase>
-<testcase name="notPassLvlTest()" classname="RPGTest" time="0">
-<system-out><![CDATA[
-unique-id: [engine:junit-jupiter]/[class:RPGTest]/[method:notPassLvlTest()]
-display-name: (unit test) notPassLvlTest:
-]]></system-out>
-</testcase>
-<testcase name="magicalProtectionTest()" classname="RPGTest" time="0.001">
-<system-out><![CDATA[
-unique-id: [engine:junit-jupiter]/[class:RPGTest]/[method:magicalProtectionTest()]
-display-name: (unit test) MageRobes magical prot only:
-]]></system-out>
-</testcase>
-<testcase name="lvlUpStatTestMageOnly()" classname="RPGTest" time="0">
-<system-out><![CDATA[
-unique-id: [engine:junit-jupiter]/[class:RPGTest]/[method:lvlUpStatTestMageOnly()]
-display-name: (scenario) lvlUpStatTestMageOnly:
-]]></system-out>
-</testcase>
-<testcase name="lvlUpXPTest()" classname="RPGTest" time="0">
-<system-out><![CDATA[
-unique-id: [engine:junit-jupiter]/[class:RPGTest]/[method:lvlUpXPTest()]
-display-name: (scenario) lvlUp xp test:
-]]></system-out>
-</testcase>
 <system-out><![CDATA[
 unique-id: [engine:junit-jupiter]
 display-name: JUnit Jupiter
